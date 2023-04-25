@@ -1,10 +1,10 @@
 import './App.css'
-import Experiment from './Experiment'
+import Main from './Main'
 
 export default function App() {
   return (
 
-      <Experiment />
+      <Main />
     
   )
 }

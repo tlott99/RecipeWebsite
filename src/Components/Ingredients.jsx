@@ -1,71 +1,61 @@
 import { React, useState } from "react";
-import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import BasicSelect from "./BasicSelect";
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
 
-export default function Ingredients() {
-  const [ingredientsList, setIngredientsList] = useState([
-    { ingredient: "" },
-  ])
-  console.log(ingredientsList);
-  
+export default function Ingredients({ingredientsList, setIngredientsList }) {
+  const [measurement, setMeasurement] = useState(['']);
+  const [amount, setAmount] = useState([''])
+  const [newIngredient, setNewIngredient] = useState('')
+
   const handleIngredientAdd = () => {
-    setIngredientsList([...ingredientsList, { ingredient: "" }])
-  }
-  const handleIngredientRemove = (index) => {
-    const list = [...ingredientsList]
-    console.log("index on remove", index)
-    list.splice(index, 1)
-    setIngredientsList(list)
-  }
-  const handleIngredientChange = (e, index) => {
-    const { name, value } = e.target
-    const list = [...ingredientsList]
-    list[index][name] = value;
-    setIngredientsList(list)
+    const thisIngredient = {
+      ingredient: newIngredient, measurement: measurement, amount: amount
+    }
+    setIngredientsList([...ingredientsList, thisIngredient])
   }
 
-
+  const handleIngredientChange = (event) => {
+    setNewIngredient(event.target.value)
+  }
+  const handleAmountChange = (event) => {
+    setAmount(event.target.value);
+  };
 
   return (
     <form className="App">
-      <div className="form-field">
-        <label htmlFor="ingredient">Ingredients</label>
-        {ingredientsList.map((singleIngredient, index) => (
-          <div key={index} className="ingredients">
-            <div className="first-division">
-              <TextField name="ingredient" type="text" id="ingredient" required
-                defaultValue={singleIngredient.ingredient}
-                onChange={(e) => handleIngredientChange(e, index)}
-              />
-              {ingredientsList.length - 1 === index && ingredientsList.length < 15 &&
-                (<button type="button" classname="add-btn"
-                  onClick={handleIngredientAdd}>
-                  <span>Add an Ingredient</span>
-                </button>
-                )}
-
-            </div>
-            <div className="second-division">
-              {ingredientsList.length > 1 && (
-                <button type="button" className="remove-btn"
-                  onClick={() => handleIngredientRemove(index)}>
-                  <span>Remove</span>
-                </button>
-              )}
-
-            </div>
-          </div>
-        ))}
-
-      </div>
-      <div className="output">
-        <h2>Output</h2>
-        {ingredientsList.map((singleIngredient, index) => (
+        <label htmlFor="ingredient">Add New Ingredients</label>
+      <Box sx={{mt:3}}>
+          <Stack spacing ={2} direction ="row">
+            <TextField name="amount" type="text" required
+              defaultValue={''}
+              onChange={handleAmountChange}
+              label="Amount"
+            />
+            <BasicSelect 
+              measurement={measurement} 
+              setMeasurement={setMeasurement} 
+            />
+            <TextField name="ingredient" type="text" id="ingredient" required
+              defaultValue={''}
+              onChange={handleIngredientChange}
+              label="Ingredient Type"
+            />
+            <button type="button" className="add-btn"
+              onClick={handleIngredientAdd}>
+              <span>Add an Ingredient</span>
+            </button>
+          </Stack>
+        </Box>
+      <Box>
+        <h2>Ingredients</h2>
+        {ingredientsList.map((ingredient, index) => (
           <ul key={index}>
-            {singleIngredient.ingredient && <li>singleIngredient.ingredient</li>}
+            {ingredient.ingredient && <li>{ingredient.amount} {ingredient.measurement} {ingredient.ingredient}</li>}
           </ul>
         ))}
-      </div>
+      </Box>
     </form>
   );
 }
