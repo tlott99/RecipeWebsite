@@ -16,10 +16,6 @@ export default function Main() {
   const [description, setDescription] = useState([''])
   const [returnValue, setReturnValue] = useState([''])
   const [title, setTitle] = useState([''])
-
-
-
-  
   // db.set("recipe1", "{'name':'Spaghetti'}").then(() => {});
   
   
