@@ -8,8 +8,6 @@ import Box from '@mui/material/Box';
 import SubmitButton from "./Components/SubmitButton";
 import Title from "./Components/Title";
 
-
-
 export default function Main() {
   const [ingredientsList, setIngredientsList] = useState([])
   const [instructionsList, setInstructionsList] = useState([])
