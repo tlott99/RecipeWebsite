@@ -1,10 +1,11 @@
 import './App.css'
-import Main from './Main'
+import PagesHandler from './PagesHandler';
+import {BrowserRouter} from 'react-router-dom'
 
 export default function App() {
   return (
-
-      <Main />
-    
+    <BrowserRouter>
+      <PagesHandler/>
+    </BrowserRouter>
   )
 }

@@ -2,6 +2,10 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import {Routes, Route, Link} from "react-router-dom";
+import RecipeBuilder from "../Pages/RecipeBuilder";
+import RecipeFinder from '../Pages/RecipeFinder';
+import Box from '@mui/material/Box';
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -11,10 +15,11 @@ export default function BasicMenu() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    console.log("hello")
   };
 
   return (
-    <div>
+    <Box>
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
@@ -33,10 +38,18 @@ export default function BasicMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>My Account</MenuItem>
-        <MenuItem onClick={handleClose}>Recipe Finder</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}>
+        Home
+        </MenuItem>
+        <MenuItem 
+          onClick= {handleClose}>
+          RecipeBuilder
+        </MenuItem>
+        <MenuItem 
+          onClick={handleClose}>Logout
+        </MenuItem>
       </Menu>
-    </div>
+    </Box>
   );
 }
+// https://github.com/mui/material-ui/issues/204

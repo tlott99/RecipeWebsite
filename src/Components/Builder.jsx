@@ -1,14 +1,15 @@
-import { React, useState } from "react";
-import BasicMenu from "./Components/DropMenu";
-import Ingredients from "./Components/Ingredients";
-import Instructions from "./Components/Instructions";
-import MealType from "./Components/MealType";
-import Description from "./Components/Description";
+import { React, useState, useEffect } from "react";
+import BasicMenu from "./DropMenu";
+import Ingredients from "./Ingredients";
+import Instructions from "./Instructions";
+import MealType from "./MealType";
+import Description from "./Description";
 import Box from '@mui/material/Box';
-import SubmitButton from "./Components/SubmitButton";
-import Title from "./Components/Title";
+import SubmitButton from "./SubmitButton";
+import Title from "./Title";
+import Typography from "@mui/material/Typography"
 
-export default function Main() {
+export default function Builder() {
   const [ingredientsList, setIngredientsList] = useState([])
   const [instructionsList, setInstructionsList] = useState([])
   const [description, setDescription] = useState([''])
@@ -18,13 +19,16 @@ export default function Main() {
   
   
   return (
+    
     <Box>
-      <BasicMenu  />
+      {/* <BasicMenu /> */}
+      <Box sx={{mt:6}}>
       <Title title={title} setTitle={setTitle}/>
+      </Box>
       <br></br>
       <MealType returnValue={returnValue} setReturnValue={setReturnValue}/>
       <Description description={description} setDescription={setDescription}/>
-      <Box sx={{mt:14}}>
+      <Box sx={{mt:6}}>
         <Ingredients 
           ingredientsList={ingredientsList} 
           setIngredientsList={setIngredientsList}
