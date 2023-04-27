@@ -5,9 +5,10 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from "@mui/material/Typography"
 
-export default function Title({title,setTitle}){
+export default function Title({title,setTitle, slug, setSlug}){
   const handleTitleChange = (event) =>{
     setTitle(event.target.value)
+    setSlug(event.target.value)
   }
 
 
