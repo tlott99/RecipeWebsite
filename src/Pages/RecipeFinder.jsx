@@ -11,6 +11,7 @@ query Recipes {
     mealType
     title
     slug
+    id
   }
 }
 `

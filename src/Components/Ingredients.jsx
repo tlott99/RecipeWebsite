@@ -22,7 +22,7 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
   const handleAmountChange = (event) => {
     setAmount(event.target.value);
   };
-
+  
   return (
     <form className="App">
         <label htmlFor="ingredient">Add New Ingredients</label>

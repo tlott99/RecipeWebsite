@@ -6,13 +6,13 @@ import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/client';
 
 const CreateRecipes = gql`
-mutation createRecipes(
+mutation createRecipe(
     $title: String!, 
     $ingredients: String!, 
     $instructions: String!, 
     $mealType: String!,
     $description: String!,
-
+    $slug: String
   ) 
   {
   createRecipe(
@@ -22,8 +22,8 @@ mutation createRecipes(
     instructions: $instructions, 
     mealType: $mealType,
     description: $description,
-
-      }
+    slug: $slug
+    }
   ) 
   {
       title
@@ -31,39 +31,80 @@ mutation createRecipes(
       instructions
       mealType
       description
-
+      id
   }
   }
-
+`
+const PublishRecipes = gql`
+mutation publishRecipe($id: ID){
+  publishRecipe(
+    where: { id: $id }
+  ) {
+    id
+  }
+}
 `
 
 
 export default function SubmitButton({title, mealType, description, ingredients, instructions, slug}){
   const [addRecipes, { loading, error, data }] = useMutation(CreateRecipes);
-
+  const [publishRecipe] = useMutation(PublishRecipes);
   if (loading) return <p>Loading...</p>;
   if (error) return console.log(error);
 
-  const newTitle = JSON.stringify(title)
+  const newTitle = title
   const newMealType = JSON.stringify(mealType)
   const newIngredients = JSON.stringify(ingredients)
   const newInstructions = JSON.stringify(instructions)
-  // const newSlug = JSON.stringify(slug)
+  const newSlug = newTitle.replace(/\s+/g, '-').toLowerCase()
 
-  const AddRecipe = (e) =>{
+  // const AddRecipe = (e) =>{
+  //   e.preventDefault();
+  //   addRecipes(
+  //     { 
+  //       variables: {
+  //         title: newTitle, 
+  //         mealType: newMealType, 
+  //         ingredients: newIngredients, 
+  //         instructions: newInstructions,
+  //         description: description,
+  //         // slug: newSlug
+  //       }
+  //     }).then((result) =>{
+  //     const recipeId = result.data.createRecipe.id;
+  //     publishRecipe({
+  //       variables: {
+  //         id: recipeId
+  //       }
+  //     })
+  //   })
+  // }
+  const AddRecipe = async (e) => {
     e.preventDefault();
-    addRecipes(
-      { 
+
+    try {
+      const result = await addRecipes({
         variables: {
-          title: newTitle, 
-          mealType: newMealType, 
-          ingredients: newIngredients, 
+          title: newTitle,
+          mealType: newMealType,
+          ingredients: newIngredients,
           instructions: newInstructions,
           description: description,
-          // slug: newSlug
-        }
+          slug: newSlug
+        },
       })
-  }
+      console.log(result)
+      const recipeId = result.data.createRecipe.id;
+      console.log(recipeId)
+      await publishRecipe({
+        variables: {
+          id: recipeId,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   
   return(
     <Box>
