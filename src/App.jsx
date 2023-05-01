@@ -8,6 +8,9 @@ import { ApolloProvider } from '@apollo/react-hooks';
 // import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import { ApolloClient,InMemoryCache } from '@apollo/client';
+import TestPage from './Pages/TestPage';
+import {Routes, Route} from "react-router-dom";
+import Builder from './Components/Builder';
 
 const httpLink = new createHttpLink({
   uri: 'https://api-us-east-1-shared-usea1-02.hygraph.com/v2/clgx5fh9m0odv01t86s67atv5/master',

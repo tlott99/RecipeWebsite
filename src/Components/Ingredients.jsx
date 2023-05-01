@@ -14,7 +14,7 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
       ingredient: newIngredient, measurement: measurement, amount: amount
     }
     setIngredientsList([...ingredientsList, thisIngredient])
-  }
+  } 
 
   const handleIngredientChange = (event) => {
     setNewIngredient(event.target.value)
