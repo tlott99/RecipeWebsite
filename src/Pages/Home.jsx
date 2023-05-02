@@ -6,7 +6,8 @@ import {Routes, Route, Link} from "react-router-dom";
 import RecipeBuilder from './RecipeBuilder';
 import RecipeFinder from './RecipeFinder';
 import { Typography } from '@mui/material';
-import MainPage from './mainpage';
+// import MainPage from './MainPage';
+import MainPages from './MainPages';
 import Builder from '../Components/Builder'
 import RecipeDisplay from './RecipeDisplay';
 
@@ -28,7 +29,7 @@ export default function Home(){
       </Stack>
 
     <Routes>
-      <Route exact path="*" element={<MainPage/>}>  </Route>
+      <Route exact path="*" element={<MainPages/>}>  </Route>
       <Route exact path="/RecipeBuilder" element={<RecipeBuilder/>}/>
       <Route exact path="/RecipeFinder" element={<RecipeFinder/>}/>
       <Route exact path ="/RecipeDisplay/:slug" element={<RecipeDisplay/>}/>
