@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from "react";
-import BasicMenu from "./DropMenu";
+import { React, useState} from "react";
+// import BasicMenu from "./DropMenu";
 import Ingredients from "./Ingredients";
 import Instructions from "./Instructions";
 import MealType from "./MealType";
@@ -7,7 +7,7 @@ import Description from "./Description";
 import Box from '@mui/material/Box';
 import SubmitButton from "./SubmitButton";
 import Title from "./Title";
-import Typography from "@mui/material/Typography"
+// import Typography from "@mui/material/Typography"
 // import { useQuery, useMutation } from '@apollo/react-hooks';
 // import { gql } from 'apollo-boost';
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {ApolloClient,InMemoryCache, ApolloProvider, gql } from '@apollo/client'
+// import {ApolloClient,InMemoryCache, ApolloProvider, gql } from '@apollo/client'
 class Hygraph extends React.Component {
 
 	// Constructor

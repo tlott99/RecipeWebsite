@@ -2,12 +2,12 @@ import React from 'react';
 // import Hygraph from "../Hygraph";
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
-import {Routes, Route, Link} from "react-router-dom";
-import RecipeDisplay from './RecipeDisplay';
-import { useParams } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import TestPage from './TestPage';
+import { Link } from "react-router-dom";
+// import RecipeDisplay from './RecipeDisplay';
+// import { useParams } from 'react-router-dom';
+// import Typography from '@mui/material/Typography';
+// import Box from '@mui/material/Box';
+// import TestPage from './TestPage';
 import Button from '@mui/material/Button';
 
 

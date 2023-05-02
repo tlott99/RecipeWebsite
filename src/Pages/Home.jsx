@@ -2,13 +2,13 @@ import React from 'react'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack'
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import RecipeBuilder from './RecipeBuilder';
 import RecipeFinder from './RecipeFinder';
-import { Typography } from '@mui/material';
+// import { Typography } from '@mui/material';
 // import MainPage from './MainPage';
 import MainPages from './MainPages';
-import Builder from '../Components/Builder'
+// import Builder from '../Components/Builder'
 import RecipeDisplay from './RecipeDisplay';
 
 export default function Home(){

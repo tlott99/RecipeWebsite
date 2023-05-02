@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography'
 import { gql } from 'apollo-boost';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { Print } from '@mui/icons-material';
+// import { Print } from '@mui/icons-material';
 
 // const displayRecipe = gql`
 // query Recipes($slug: String!) {
