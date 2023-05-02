@@ -37,11 +37,11 @@ export default function Instructions({instructionsList, setInstructionsList }) {
       </div>
       <div className="output">
         <h2>Instructions</h2>
+        <ol >
           {instructionsList.map((instruction, index) => (
-            <ol key={index}>
-             {instruction.instruction && <li>{instruction.instruction}</li>}
-            </ol>
+             <li key={index}>{instruction.instruction}</li>
           ))} 
+          </ol>
       </div>
     </form>
   );
