@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 // import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/client';
+// import {useHistory} from 'react-router-dom'
 
 const CreateRecipes = gql`
 mutation createRecipe(
@@ -49,6 +50,7 @@ mutation publishRecipe($id: ID){
 export default function SubmitButton({title, mealType, description, ingredients, instructions, slug}){
   const [addRecipes, { loading, error, data }] = useMutation(CreateRecipes);
   const [publishRecipe] = useMutation(PublishRecipes);
+  // const history = useHistory()
   if (loading) return <p>Loading...</p>;
   if (error) return console.log(error);
 
@@ -101,6 +103,7 @@ export default function SubmitButton({title, mealType, description, ingredients,
           id: recipeId,
         },
       });
+      window.location.href = '/RecipeFinder';
     } catch (error) {
       console.log(error);
     }

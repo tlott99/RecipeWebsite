@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import TextField from '@mui/material/TextField';
 import BasicSelect from "./BasicSelect";
 import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
+import {Box, Button} from '@mui/material';
 
 export default function Ingredients({ingredientsList, setIngredientsList }) {
   const [measurement, setMeasurement] = useState(['']);
@@ -25,7 +25,7 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
   
   return (
     <form className="App">
-        <label htmlFor="ingredient">Add New Ingredients</label>
+      <label htmlFor="ingredient">Add New Ingredients</label>
       <Box sx={{mt:3}}>
           <Stack spacing ={2} direction ="row">
             <TextField name="amount" type="text" required
@@ -42,10 +42,10 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
               onChange={handleIngredientChange}
               label="Ingredient Type"
             />
-            <button type="button" className="add-btn"
+            <Button variant='outlined' className="add-btn"
               onClick={handleIngredientAdd}>
               <span>Add an Ingredient</span>
-            </button>
+            </Button>
           </Stack>
         </Box>
       <Box>
