@@ -15,8 +15,8 @@ export default function Home(){
 
 
   return(
-    <Box sx={{mt:3}}>
-      <Stack spacing ={2} direction ="row">
+    <Box sx={{mt:3}} >
+      <Stack spacing ={2} direction ="row" sx={{display: 'flex', justifyContent: 'center'}}>
         <Button href="/RecipeFinder" variant="contained">
           Recipe Finder
         </Button>

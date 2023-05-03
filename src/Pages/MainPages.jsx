@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 export default function MainPages(){
 
     return(
-        <Typography>This is my senior project. Go to this website: https://github.com/tlott99/RecipeWebsite</Typography>
+        <Typography sx={{mt: 5, display: 'flex', justifyContent: 'center'}}>This is my senior project. If you would like to see my code click this <a href="https://github.com/tlott99/RecipeWebsite"> GitHub</a></Typography>
 
     )
 }

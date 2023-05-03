@@ -57,7 +57,7 @@ export default function RecipeDisplay(){
     // console.log(recipe.ingredients)
     // console.log(ingredientsJson[1].ingredient)
     // console.log(ingredientsJson.length)
-    const ingredientsString = ingredientsJson.map((ingredientObj) => <li key={ingredientObj.id}>{ingredientObj.ingredient}</li>);
+    const ingredientsString = ingredientsJson.map((ingredientObj) => <li key={ingredientObj.id}>{ingredientObj.amount} {ingredientObj.measurement} {ingredientObj.ingredient}</li>);
     const instructionsString = instructionsJson.map((instructionObj) => <li key={instructionObj.id}>{instructionObj.instruction}</li>);
 
     // const i = 0

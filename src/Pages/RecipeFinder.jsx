@@ -9,11 +9,12 @@ import { Link } from "react-router-dom";
 // import Box from '@mui/material/Box';
 // import TestPage from './TestPage';
 import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 
 
 const getRecipes = gql`
-query Recipes {
-  recipes {
+query Recipes{
+  recipes(first : 100) {
     ingredients
     instructions
     description
@@ -55,7 +56,7 @@ export default function RecipeFinder() {
         data.recipes.map((recipe, index) => (
           <div key={index}>
             <Link to={`/RecipeDisplay/${recipe.slug}`}>
-              {recipe.title}
+              <Typography>{recipe.title}</Typography>
             </Link>
             {/* <Routes>
             <Route

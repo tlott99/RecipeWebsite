@@ -1,5 +1,6 @@
 import './App.css'
-import PagesHandler from './PagesHandler';
+// import PagesHandler from './PagesHandler';
+import Home from './Pages/Home';
 import {BrowserRouter} from 'react-router-dom'
 // import {ApolloProvider} from '@apollo/react-hooks'
 // import ApolloBoost from 'apollo-boost'
@@ -28,7 +29,7 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <PagesHandler/>
+        <Home/>
       </BrowserRouter>
     </ApolloProvider>
   )
