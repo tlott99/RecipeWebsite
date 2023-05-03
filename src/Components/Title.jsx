@@ -1,16 +1,11 @@
-import {React, useState} from 'react';
-import Box from '@mui/material/Box';
-// import Stack from '@mui/material/Stack';
-// import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Typography from "@mui/material/Typography"
+import {React} from 'react';
+import {Box, TextField, Typography} from '@mui/material';
 
-export default function Title({title,setTitle, slug, setSlug}){
+export default function Title({title, setTitle, slug, setSlug}){
   const handleTitleChange = (event) =>{
     setTitle(event.target.value)
     setSlug(event.target.value)
   }
-
 
   return(
     <Box>

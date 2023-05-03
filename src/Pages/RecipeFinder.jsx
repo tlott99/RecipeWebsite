@@ -1,16 +1,8 @@
 import React from 'react';
-// import Hygraph from "../Hygraph";
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { Link } from "react-router-dom";
-// import RecipeDisplay from './RecipeDisplay';
-// import { useParams } from 'react-router-dom';
-// import Typography from '@mui/material/Typography';
-// import Box from '@mui/material/Box';
-// import TestPage from './TestPage';
-import Button from '@mui/material/Button';
-import { Typography } from '@mui/material';
-
+import { Typography, Box } from '@mui/material';
 
 const getRecipes = gql`
 query Recipes{
@@ -25,32 +17,15 @@ query Recipes{
   }
 }
 `
-// const displayRecipe = gql`
-// query Recipes($slug: String!) {
-// recipe(where: {slug: $slug})
-// {
-//     ingredients
-//     instructions
-//     mealType
-//     title
-//     description
-// }
-// }
-// `
 
 export default function RecipeFinder() {
-
   const { loading, error, data } = useQuery(getRecipes);
-  
   
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(  </p>;
-  // if (loadings) return <p>Loading...</p>;
-  // if (errors) return <p>Error :(  </p>;
-  const DataPrint = () =>{
-    data.recipes.map((recipe) => (console.log(recipe, recipe.slug)))}
+
   return (
-    <div >
+    <Box >
       <h2>Recipe Finder</h2>
       {
         data.recipes.map((recipe, index) => (
@@ -58,28 +33,9 @@ export default function RecipeFinder() {
             <Link to={`/RecipeDisplay/${recipe.slug}`}>
               <Typography>{recipe.title}</Typography>
             </Link>
-            {/* <Routes>
-            <Route
-            key={recipe.slug}
-            path={`/RecipeDisplay/:slug`}
-            element={<RecipeDisplay slug={recipe.slug}/>}
-          />
-          </Routes> */}
           </div>
         ))  
       }
-      {/* <Button href="/RecipeDisplay" variant="contained">
-        Recipe Builder
-      </Button> */}
-      {/* <Routes>
-      {data.recipes.map((recipe) => (
-          <Route
-            key={recipe.slug}
-            path={`/RecipeDisplay/${recipe.slug}`}
-            element={<RecipeDisplay slug={recipe.slug}/>}
-          />
-        ))}
-      </Routes> */}
-    </div>
+    </Box>
   )
 }

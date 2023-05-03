@@ -1,23 +1,9 @@
 import React from 'react';
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
+import { Button, Stack, Typography, Box } from '@mui/material';
 import { gql } from 'apollo-boost';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-// import { Print } from '@mui/icons-material';
 
-// const displayRecipe = gql`
-// query Recipes($slug: String!) {
-//     recipe(where: {slug: $slug})
-//         {
-//             ingredients
-//             instructions
-//             mealType
-//             title
-//             description
-//         }
-//     }
-// `
 const displayRecipe = gql`
 query MyQuery($slug: String = "") {
     recipes(where: {slug: $slug}) {
@@ -31,12 +17,9 @@ query MyQuery($slug: String = "") {
   }
 `
 
-export default function RecipeDisplay(){
-
+export default function RecipeDisplay(props){
     const params = useParams();
-    // console.log(params)
     const slug = params.slug
-    // console.log(slug)
     const { loading, error, data } = useQuery(displayRecipe, {
         variables: { slug:slug },
       });
@@ -45,33 +28,18 @@ export default function RecipeDisplay(){
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(  </p>;
 
-    // const recipe = data?.recipe;
-    // if (!recipe) return <p>No recipe found</p>;
-
     const recipe = data.recipes[0]
-    // console.log(data)
     const ingredientsJson = JSON.parse(recipe.ingredients)
     const instructionsJson = JSON.parse(recipe.instructions)
-    // console.log(instructionsJson)
     const mealTypeJson = JSON.parse(recipe.mealType)
-    // console.log(recipe.ingredients)
-    // console.log(ingredientsJson[1].ingredient)
-    // console.log(ingredientsJson.length)
     const ingredientsString = ingredientsJson.map((ingredientObj) => <li key={ingredientObj.id}>{ingredientObj.amount} {ingredientObj.measurement} {ingredientObj.ingredient}</li>);
     const instructionsString = instructionsJson.map((instructionObj) => <li key={instructionObj.id}>{instructionObj.instruction}</li>);
-
-    // const i = 0
-    // const PrintIngredients = (x)=>{
-    //   const listy=[]
-    //   while (i < x.length) {
-    //     console.log(x[i].ingredient);
-    //     console.log(i)
-    //     listy.push(x[i].ingredient)
-    //     i++;
-    // }
-    //   return(console.log(listy))
-    // }
-    // console.log(ingredientsString)
+    const turnPrint = () => {
+      props.turnPrint();
+    }
+    const onPrint = () => {
+      props.onPrint();
+    }
 
     return(
         <Box>
@@ -82,7 +50,10 @@ export default function RecipeDisplay(){
             <ul>{ingredientsString}</ul>
             <Typography>Instructions:</Typography>
             <ol>{instructionsString}</ol>
+            <Stack spacing ={2} direction ="row" sx={{bottom: 0, position:"absolute", justifyContent: 'center', width:'99%'}}>
+              <Button variant="contained" onClick={turnPrint} sx={{maxWidth: '400px', maxHeight: '30px', minWidth: '100px', minHeight: '30px', fontSize:'10px'}}>Turn on Print Mode</Button>
+              <Button variant="contained" onClick={onPrint}>Print</Button>
+            </Stack>
         </Box>
     )
-{/* <PrintIngredients x={ingredientsJson}/> */}
 }

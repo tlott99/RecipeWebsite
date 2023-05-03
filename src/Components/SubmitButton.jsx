@@ -1,10 +1,7 @@
-import {React, useState} from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-// import { useQuery } from '@apollo/react-hooks';
+import {React} from 'react';
+import {Button,Box} from '@mui/material';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/client';
-// import {useHistory} from 'react-router-dom'
 
 const CreateRecipes = gql`
 mutation createRecipe(
@@ -50,7 +47,7 @@ mutation publishRecipe($id: ID){
 export default function SubmitButton({title, mealType, description, ingredients, instructions, slug}){
   const [addRecipes, { loading, error, data }] = useMutation(CreateRecipes);
   const [publishRecipe] = useMutation(PublishRecipes);
-  // const history = useHistory()
+
   if (loading) return <p>Loading...</p>;
   if (error) return console.log(error);
 
@@ -60,30 +57,8 @@ export default function SubmitButton({title, mealType, description, ingredients,
   const newInstructions = JSON.stringify(instructions)
   const newSlug = newTitle.replace(/\s+/g, '-').toLowerCase()
 
-  // const AddRecipe = (e) =>{
-  //   e.preventDefault();
-  //   addRecipes(
-  //     { 
-  //       variables: {
-  //         title: newTitle, 
-  //         mealType: newMealType, 
-  //         ingredients: newIngredients, 
-  //         instructions: newInstructions,
-  //         description: description,
-  //         // slug: newSlug
-  //       }
-  //     }).then((result) =>{
-  //     const recipeId = result.data.createRecipe.id;
-  //     publishRecipe({
-  //       variables: {
-  //         id: recipeId
-  //       }
-  //     })
-  //   })
-  // }
   const AddRecipe = async (e) => {
     e.preventDefault();
-
     try {
       const result = await addRecipes({
         variables: {

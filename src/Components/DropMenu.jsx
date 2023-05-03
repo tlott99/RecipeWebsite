@@ -1,15 +1,10 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-// import {Routes, Route, Link} from "react-router-dom";
-// import RecipeBuilder from "../Pages/RecipeBuilder";
-// import RecipeFinder from '../Pages/RecipeFinder';
-import Box from '@mui/material/Box';
+import {Box, Menu, MenuItem, Button} from '@mui/material';
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -52,4 +47,3 @@ export default function BasicMenu() {
     </Box>
   );
 }
-// https://github.com/mui/material-ui/issues/204

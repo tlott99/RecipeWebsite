@@ -1,8 +1,6 @@
 import { React, useState } from "react";
-import TextField from '@mui/material/TextField';
-import BasicSelect from "./BasicSelect";
-import Stack from '@mui/material/Stack';
-import {Box, Button} from '@mui/material';
+import {Box, Button, Stack, TextField} from '@mui/material';
+import BasicSelect from "./BasicSelect"
 
 export default function Ingredients({ingredientsList, setIngredientsList }) {
   const [measurement, setMeasurement] = useState(['']);
@@ -15,7 +13,6 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
     }
     setIngredientsList([...ingredientsList, thisIngredient])
   } 
-
   const handleIngredientChange = (event) => {
     setNewIngredient(event.target.value)
   }

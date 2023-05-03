@@ -1,12 +1,8 @@
 import NewCheckbox from "./Checkbox";
 import { React } from 'react';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
+import {Box, Stack, Typography} from '@mui/material';
 
 export default function MealType({returnValue, setReturnValue}){
-    // const [returnValue, setReturnValue] = useState('')
-
 
   return(
     <Box>

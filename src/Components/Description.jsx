@@ -1,7 +1,5 @@
 import { React } from "react";
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Typography from "@mui/material/Typography"
+import {Typography, Box, TextField} from "@mui/material"
 
 export default function Description({description, setDescription}){
   const handleDescriptionChange = (event) => {

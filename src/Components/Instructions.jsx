@@ -1,8 +1,5 @@
 import { React, useState } from "react";
-import TextField from '@mui/material/TextField';
-// import BasicSelect from "./BasicSelect";
-// import Input from '@mui/material/Input';
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Button, Stack, TextField } from "@mui/material";
 
 
 export default function Instructions({instructionsList, setInstructionsList }) {
@@ -31,9 +28,7 @@ export default function Instructions({instructionsList, setInstructionsList }) {
           onChange={handleInstructionChange}
           label='New Instructions'
         />
-        <Button variant='outlined' className="add-btn" type="submit"
-          // onClick={handleInstructionAdd}
-          >
+        <Button variant='outlined' className="add-btn" type="submit">
           <span>Add an Instruction</span>
         </Button> 
       </Stack>
