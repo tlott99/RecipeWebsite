@@ -34,7 +34,7 @@ export default function Builder() {
           setIngredientsList={setIngredientsList}
         />
       </Box>
-      <Box sx={{mt:14}}>
+      <Box sx={{mt:6}}>
         <Instructions 
           instructionsList={instructionsList} 
           setInstructionsList={setInstructionsList}

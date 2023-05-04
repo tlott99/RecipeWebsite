@@ -9,11 +9,12 @@ export default function Title({title, setTitle, slug, setSlug}){
 
   return(
     <Box>
-        <Typography>Title</Typography>
+        <Typography variant ="h5" >Title</Typography>
         <TextField name="title" id="title" required
               defaultValue={''}
               onChange={handleTitleChange}
               label="Add New Title"
+              sx={{mt:2, ml:3}}
         />
     
     </Box>

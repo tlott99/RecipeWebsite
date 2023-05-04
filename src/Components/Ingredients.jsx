@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import {Box, Button, Stack, TextField} from '@mui/material';
+import {Box, Button, Stack, TextField, Typography} from '@mui/material';
 import BasicSelect from "./BasicSelect"
 
 export default function Ingredients({ingredientsList, setIngredientsList }) {
@@ -22,9 +22,9 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
   
   return (
     <form className="App">
-      <label htmlFor="ingredient">Add New Ingredients</label>
       <Box sx={{mt:3}}>
-          <Stack spacing ={2} direction ="row">
+      <Typography variant="h5" htmlFor="ingredient" >Add New Ingredients</Typography>
+          <Stack spacing ={2} direction ="row" sx={{mt:2, ml:3}}>
             <TextField name="amount" type="text" required
               defaultValue={''}
               onChange={handleAmountChange}
@@ -45,8 +45,8 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
             </Button>
           </Stack>
         </Box>
-      <Box>
-        <h2>Ingredients</h2>
+        <Typography variant="h5" sx={{mt:2}}>Ingredients</Typography>
+      <Box sx={{ml:2}}>
         {ingredientsList.map((ingredient, index) => (
           <ul key={index}>
             {ingredient.ingredient && <li>{ingredient.amount} {ingredient.measurement} {ingredient.ingredient}</li>}

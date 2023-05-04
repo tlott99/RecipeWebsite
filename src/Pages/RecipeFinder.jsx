@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { Link } from "react-router-dom";
 import { Typography, Box } from '@mui/material';
+import Paper from '@mui/material/Paper';
 
 const getRecipes = gql`
 query Recipes{
@@ -25,13 +26,13 @@ export default function RecipeFinder() {
   if (error) return <p>Error :(  </p>;
 
   return (
-    <Box >
-      <h2>Recipe Finder</h2>
+    <Box sx={{ml:3}}>
+      <Typography variant="h2">Recipe Finder</Typography>
       {
         data.recipes.map((recipe, index) => (
           <div key={index}>
             <Link to={`/RecipeDisplay/${recipe.slug}`}>
-              <Typography>{recipe.title}</Typography>
+              <Typography variant="h6" sx={{ml:2}}>{recipe.title}</Typography>
             </Link>
           </div>
         ))  

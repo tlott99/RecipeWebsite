@@ -6,8 +6,8 @@ export default function MealType({returnValue, setReturnValue}){
 
   return(
     <Box>
-      <Typography>Select Meal Type</Typography>
-      <Stack spacing ={2} direction ="row">
+      <Typography variant ="h5" sx={{mt:3}}>Select Meal Type</Typography>
+      <Stack spacing ={2} direction ="row" sx={{mt:2, ml:3}}>
         <NewCheckbox 
           x="Breakfast" 
           returnValue={returnValue} 
