@@ -53,8 +53,8 @@ export default function RecipeDisplay(props){
             <Typography variant="h5" sx={{mt:3, ml:3}}>Instructions:</Typography>
             <Box variant="body1" sx={{mt:3, ml:3}}>{instructionsString}</Box>
             <Stack spacing ={2} direction ="row" sx={{bottom: 0, position:"absolute", justifyContent: 'center', width:'98%'}}>
-              <Button variant="contained" onClick={turnPrint} sx={{maxWidth: '400px', maxHeight: '30px', minWidth: '100px', minHeight: '30px', fontSize:'10px'}}>Turn on Print Mode</Button>
-              <Button variant="contained" onClick={onPrint}>Print</Button>
+              <Button variant="text" onClick={turnPrint} sx={{maxWidth: '400px', maxHeight: '30px', minWidth: '100px', minHeight: '30px', fontSize:'10px'}}>Turn on Print Mode</Button>
+              <Button variant="text" onClick={onPrint}>Print</Button>
             </Stack>
         </Box>
     )
