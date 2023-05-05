@@ -1,10 +1,11 @@
 import {React, useState} from 'react'
-import {Stack, Box, Button} from '@mui/material'
+import {Stack, Box, Button, Typography} from '@mui/material'
 import {Routes, Route} from "react-router-dom";
 import RecipeBuilder from './RecipeBuilder';
 import RecipeFinder from './RecipeFinder';
 import MainPages from './MainPages';
 import RecipeDisplay from './RecipeDisplay';
+
 
 export default function Home(){
   const[printMode, setPrintMode] = useState(false)
@@ -19,6 +20,7 @@ export default function Home(){
   
   return(
     <Box sx={{mt:3}} >
+      <Typography variant="h2" align="center" sx={{mb:3}}>PutRecipeHere()</Typography>
       {printMode === false &&(
       <Stack spacing ={2} direction ="row" sx={{display: 'flex', justifyContent: 'center'}}>
         <Button href="/RecipeFinder" variant="contained">

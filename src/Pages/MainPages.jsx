@@ -5,7 +5,7 @@ export default function MainPages(){
     return(
         <Box>
             <Typography variant="h4" sx={{mt: 5, display: 'flex', justifyContent: 'center', mb:4}}>
-                Welcome to my Senior Project
+                Welcome to PutRecipeHere()
             </Typography>
             <Typography variant="body1" align= 'center' sx={{mb:2, ml:20, mr:20}}>
                 As I was searching for what to do my project on I was talking with my brother Derek. One of his goals was to write a cookbook. I enjoy cooking and it was one of the topics
