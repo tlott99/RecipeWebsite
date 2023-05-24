@@ -4,6 +4,7 @@ import CircleIcon from '@mui/icons-material/Circle';
 import { gql } from 'apollo-boost';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
+import "../RecipeDisplay.css"
 
 const displayRecipe = gql`
 query MyQuery($slug: String = "") {
@@ -33,8 +34,8 @@ export default function RecipeDisplay(props){
     const ingredientsJson = JSON.parse(recipe.ingredients)
     const instructionsJson = JSON.parse(recipe.instructions)
     const mealTypeJson = JSON.parse(recipe.mealType)
-    const ingredientsString = ingredientsJson.map((ingredientObj) => <Typography variant ="body1" key={ingredientObj.id}>• {ingredientObj.amount} {ingredientObj.measurement} {ingredientObj.ingredient}</Typography>);
-    const instructionsString = instructionsJson.map((instructionObj, index) => <Typography variant="body1" key={instructionObj.id}>{index+1}. {instructionObj.instruction}</Typography>);
+    const ingredientsString = ingredientsJson.map((ingredientObj) => <p key={ingredientObj.id}>• {ingredientObj.amount} {ingredientObj.measurement} {ingredientObj.ingredient}</p>);
+    const instructionsString = instructionsJson.map((instructionObj, index) => <p key={instructionObj.id}>{index+1}. {instructionObj.instruction}</p>);
     const turnPrint = () => {
       props.turnPrint();
     }
@@ -43,19 +44,37 @@ export default function RecipeDisplay(props){
     }
 
     return(
-        <Box sx={{ml:3}}>
-            <Typography variant="h5" sx={{mt:3}}>{recipe.title}</Typography>
-            <Typography variant="h5"sx={{mt:3, ml:3}}>Meal Type: {mealTypeJson.checkedMeal}</Typography>
-            <Typography variant="h5"sx={{mt:3, ml:3}}>Recipe Description</Typography>
-            <Typography variant="body1"sx={{mt:3, ml:6}}>{recipe.description}</Typography>
-            <Typography variant="h5"sx={{mt:3, ml:3}}>Ingredients:</Typography>
-            <Box variant="body1" sx={{mt:3, ml:3}} >{ingredientsString}</Box>
-            <Typography variant="h5" sx={{mt:3, ml:3}}>Instructions:</Typography>
-            <Box variant="body1" sx={{mt:3, ml:3}}>{instructionsString}</Box>
-            <Stack spacing ={2} direction ="row" sx={{bottom: 0, position:"absolute", justifyContent: 'center', width:'98%'}}>
-              <Button variant="text" onClick={turnPrint} sx={{maxWidth: '400px', maxHeight: '30px', minWidth: '100px', minHeight: '30px', fontSize:'10px'}}>Turn on Print Mode</Button>
-              <Button variant="text" onClick={onPrint}>Print</Button>
-            </Stack>
-        </Box>
+        <body class="thnested" style={{marginLeft: "3rem", padding:0}}>
+            <h3 class="title">{recipe.title}</h3>
+            <h3 class="onested title">Meal Type: {mealTypeJson.checkedMeal}</h3>
+            <h3 class="onested title">Recipe Description</h3>
+            <p class="thnested">{recipe.description}</p>
+            <h3 class="onested title">Ingredients:</h3>
+            <p class="thnested">{ingredientsString}</p>
+            <h3 class="onested title">Instructions:</h3>
+            <p class= "thnested">{instructionsString}</p>
+
+        <footer style={{ display: 'flex', width: '15%', justifyContent: "center",
+              margin: "auto",}}>
+            <div className="button-container" spacing={2} direction="row" style={{
+              width:'98%',
+              justifyContent: "center",
+              '@media screen and (max-width: 600px)': {
+              flexDirection: 'column',
+              alignItems: 'center',
+              }
+              }}>
+              <button class="lightblue" onClick={turnPrint} style={{
+              '@media screen and (max-width: 600px)': {
+                maxWidth: '100%',
+                minWidth: 'unset',
+              }}}>Turn on Print Mode</button>
+              <button class="lightblue" onClick={onPrint} style={{
+                '@media screen and (max-width: 600px)': {
+                width: '100%',
+              }}}>Print</button>
+            </div>
+        </footer>
+        </body>
     )
 }
