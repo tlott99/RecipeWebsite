@@ -30,11 +30,11 @@ export default function RecipeFinder() {
       <Typography variant="h2">Recipe Finder</Typography>
       {
         data.recipes.map((recipe, index) => (
-          <div key={index}>
+          <Box key={index}>
             <Link to={`/RecipeDisplay/${recipe.slug}`}>
               <Typography variant="h6" sx={{ml:2}}>{recipe.title}</Typography>
             </Link>
-          </div>
+          </Box>
         ))  
       }
     </Box>
