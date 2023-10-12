@@ -48,16 +48,16 @@ return(
             }}
           >
             {large ? (null) :       
-            <Button href="/" variant="contained">
+            <Button href="/" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
             Login
-          </Button>}
-            <Button href="/" variant="contained">
+            </Button>}
+            <Button href="/" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
               Home
             </Button>
-            <Button href="/RecipeFinder" variant="contained">
+            <Button href="/RecipeFinder" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
               Recipe Finder
             </Button>
-            <Button href="/RecipeBuilder" variant="contained">
+            <Button href="/RecipeBuilder" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
               Recipe Builder
             </Button>
           </Stack>
