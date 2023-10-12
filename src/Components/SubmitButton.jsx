@@ -86,7 +86,7 @@ export default function SubmitButton({title, mealType, description, ingredients,
   
   return(
     <Box>
-      <Button variant="outlined" onClick={AddRecipe } sx={{mt:3}}> Submit </Button>
+      <Button variant="outlined" onClick={AddRecipe } sx={{mt:3, mb:4}}> Submit </Button>
     </Box>
   )
 }

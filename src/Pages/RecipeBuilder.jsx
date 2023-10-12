@@ -4,8 +4,8 @@ import { Box } from '@mui/material';
 
 export default function RecipeBuilder() {
   return (
-    <Box sx={{ml:3}}>
-    <Builder/>
+    <Box>
+      <Builder/>
     </Box>
   )
 }

@@ -6,6 +6,7 @@ import Description from "./Description";
 import Box from '@mui/material/Box';
 import SubmitButton from "./SubmitButton";
 import Title from "./Title";
+import {Container} from "@mui/material";
 
 
 export default function Builder() {
@@ -18,7 +19,7 @@ export default function Builder() {
   
   return (
     
-    <Box>
+    <Container>
       <Box sx={{mt:6}}>
         <Title title={title} setTitle={setTitle} slug={slug} setSlug={setSlug} />
       </Box>
@@ -50,6 +51,6 @@ export default function Builder() {
           slug={slug}
         />
       </Box>
-    </Box>
+    </Container>
   )
 }

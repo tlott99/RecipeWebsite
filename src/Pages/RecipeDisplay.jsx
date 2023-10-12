@@ -64,7 +64,7 @@ export default function RecipeDisplay(props){
               alignItems: 'center',
               }
               }}>
-              <button class="lightblue" onClick={turnPrint} style={{
+              <button class="backgroundLightBlue" onClick={turnPrint} style={{
               '@media screen and (max-width: 600px)': {
                 maxWidth: '100%',
                 minWidth: 'unset',

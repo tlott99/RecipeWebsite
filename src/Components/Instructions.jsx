@@ -27,8 +27,10 @@ export default function Instructions({instructionsList, setInstructionsList }) {
           defaultValue={''}
           onChange={handleInstructionChange}
           label='New Instructions'
+          multiline
+          sx={{width:"50%"}}
         />
-        <Button variant='outlined' className="add-btn" type="submit">
+        <Button variant='outlined' className="add-btn" type="submit" >
           <span>Add an Instruction</span>
         </Button> 
       </Stack>

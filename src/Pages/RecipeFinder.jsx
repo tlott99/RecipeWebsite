@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
-import { Link } from "react-router-dom";
-import { Typography, Box } from '@mui/material';
-import Paper from '@mui/material/Paper';
+import { Typography, Box, Container, Button, TextField } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 const getRecipes = gql`
 query Recipes{
@@ -21,22 +20,44 @@ query Recipes{
 
 export default function RecipeFinder() {
   const { loading, error, data } = useQuery(getRecipes);
-  
+  const [searchTerm, setSearchTerm] = useState('');
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(  </p>;
+  const title="All Recipes";
+ 
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    // You can perform search-related logic here
+  };
 
   return (
-    <Box sx={{ml:3}}>
-      <Typography variant="h2">Recipe Finder</Typography>
+    <Container >  
+      <Typography variant="h2" sx={{mb:3}}>{title}</Typography>
+      <TextField 
+       label={
+        <>
+          <SearchIcon style={{ marginRight: '8px' }} />
+          Search
+        </>
+      }
+      variant="outlined"
+      value={searchTerm}
+      onChange={handleSearch}
+      sx={{width:"50%", mb:3}}
+    />
       {
-        data.recipes.map((recipe, index) => (
+        data.recipes
+          .slice()
+          .sort((a, b) => a.title.localeCompare(b.title))
+          .map((recipe, index) => (
           <Box key={index}>
-            <Link to={`/RecipeDisplay/${recipe.slug}`}>
-              <Typography variant="h6" sx={{ml:2}}>{recipe.title}</Typography>
-            </Link>
+            <Button href={`/RecipeDisplay/${recipe.slug}`} sx={{ display:"inline"}}>
+                {recipe.title}
+            </Button>
           </Box>
         ))  
       }
-    </Box>
+    </Container>
   )
 }
