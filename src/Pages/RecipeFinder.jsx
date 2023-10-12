@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
+import { gql } from 'graphql-tag';
 import { Typography, Box, Container, Button, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 

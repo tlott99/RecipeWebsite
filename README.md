@@ -9,7 +9,7 @@ npm start
 https://mui.com/components/
 
 #todos
-1. change from apollo boost to apollo client
+$1. change from apollo boost to apollo client
 -https://www.apollographql.com/docs/react/v2/migrating/boost-migration/
 2. fix up the header
 3. create a footer

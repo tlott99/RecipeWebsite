@@ -1,6 +1,6 @@
 import {React} from 'react';
 import {Button,Box} from '@mui/material';
-import { gql } from 'apollo-boost';
+import { gql } from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 
 const CreateRecipes = gql`
