@@ -5,7 +5,7 @@ import MealType from "./MealType";
 import Description from "./Description";
 import SubmitButton from "./SubmitButton";
 import Title from "./Title";
-import {Container, Box} from "@mui/material";
+import {Container, Box, useMediaQuery} from "@mui/material";
 
 
 export default function Builder() {
@@ -15,14 +15,15 @@ export default function Builder() {
   const [returnValue, setReturnValue] = useState([''])
   const [title, setTitle] = useState('')
   const [slug, setSlug] = useState('');
-  
+  const large = useMediaQuery('(min-width:1200px)');
+
   return (
     
     <Container>
       <Box sx={{mt:6}}>
         <Title title={title} setTitle={setTitle} slug={slug} setSlug={setSlug} />
       </Box>
-      <Box>
+      <Box sx={{display: 'flex', flexDirection:large ? 'row' : 'column'}}>
         <MealType returnValue={returnValue} setReturnValue={setReturnValue}/>
       </Box>
       <Box>
