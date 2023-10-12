@@ -1,6 +1,4 @@
 import React from 'react';
-import { Button, Stack, Typography, Box, IconButton} from '@mui/material';
-import CircleIcon from '@mui/icons-material/Circle';
 import { gql } from 'graphql-tag';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';

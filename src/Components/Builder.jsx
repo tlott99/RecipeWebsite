@@ -3,10 +3,9 @@ import Ingredients from "./Ingredients";
 import Instructions from "./Instructions";
 import MealType from "./MealType";
 import Description from "./Description";
-import Box from '@mui/material/Box';
 import SubmitButton from "./SubmitButton";
 import Title from "./Title";
-import {Container} from "@mui/material";
+import {Container, Box} from "@mui/material";
 
 
 export default function Builder() {
