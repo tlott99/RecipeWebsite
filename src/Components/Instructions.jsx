@@ -12,7 +12,11 @@ export default function Instructions({instructionsList, setInstructionsList }) {
     }
     setInstructionsList([...instructionsList, thisInstruction])
   }
-
+  const handleInstructionRemove = (index) => {
+    const updatedInstructions = [...instructionsList];
+    updatedInstructions.splice(index, 1);
+    setInstructionsList(updatedInstructions);
+  }
   const handleInstructionChange = (event) => {
     event.preventDefault()
     setNewInstruction(event.target.value)
@@ -39,7 +43,14 @@ export default function Instructions({instructionsList, setInstructionsList }) {
       <Box sx={{ml:2}}>
         <ol >
           {instructionsList.map((instruction, index) => (
-             <li key={index}>{instruction.instruction}</li>
+             <li key={index}>{instruction.instruction}
+             <Button
+             variant="outlined"
+             onClick={() => handleInstructionRemove(index)}
+             sx={{ml:1}}
+           >
+             Remove
+           </Button></li>
           ))} 
           </ol>
       </Box>
