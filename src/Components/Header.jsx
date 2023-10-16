@@ -19,7 +19,7 @@ return(
             }}
           >
             {large ? (
-              <Button href="/" variant="contained">
+              <Button href="/login" variant="contained">
                 Login
               </Button>
             ) : null}
@@ -48,7 +48,7 @@ return(
             }}
           >
             {large ? (null) :       
-            <Button href="/" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
+            <Button href="/login" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
             Login
             </Button>}
             <Button href="/" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>

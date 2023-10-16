@@ -62,7 +62,7 @@ export default function RecipeFinder() {
           onChange={(e) => setSearchCategory(e.target.value)}
           inputProps={{ name: 'searchCategory', id: 'search-category' }}
         >
-          <MenuItem value="title">Title</MenuItem>
+          <MenuItem value="title">Title &nbsp;</MenuItem>
           <MenuItem value="mealType">Meal Type</MenuItem>
           {/* Add more search categories as needed */}
         </Select>

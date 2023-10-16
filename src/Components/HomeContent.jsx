@@ -1,10 +1,10 @@
 import { Typography, Button, Box , Container} from "@mui/material";
 
-export default function MainPages(){
+export default function HomeContent(){
 
     return(
         <Container>
-            <Typography variant="h4" sx={{mt: 5, display: 'flex', justifyContent: 'center', mb:4}}>
+            <Typography variant="h4" align="center" sx={{mt: 5, display: 'flex', justifyContent: 'center', mb:4}}>
                 Welcome to PutRecipeHere()
             </Typography>
             <Typography variant="body1" align= 'center' sx={{mb:2}}>

@@ -6,15 +6,17 @@ import Description from "./Description";
 import SubmitButton from "./SubmitButton";
 import Title from "./Title";
 import {Container, Box, useMediaQuery} from "@mui/material";
+import RecipePrivacy from "./RecipePrivacy";
 
 
 export default function Builder() {
-  const [ingredientsList, setIngredientsList] = useState([])
-  const [instructionsList, setInstructionsList] = useState([])
-  const [description, setDescription] = useState([''])
-  const [returnValue, setReturnValue] = useState([''])
-  const [title, setTitle] = useState('')
+  const [ingredientsList, setIngredientsList] = useState([]);
+  const [instructionsList, setInstructionsList] = useState([]);
+  const [description, setDescription] = useState(['']);
+  const [returnValue, setReturnValue] = useState(['']);
+  const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
+  const [privacy, setPrivacy] = useState('');
   const large = useMediaQuery('(min-width:1200px)');
 
   return (
@@ -22,6 +24,9 @@ export default function Builder() {
     <Container>
       <Box sx={{mt:6}}>
         <Title title={title} setTitle={setTitle} slug={slug} setSlug={setSlug} />
+      </Box>
+      <Box sx={{mt:6}}>
+        <RecipePrivacy privacy={privacy} setPrivacy={setPrivacy}/>
       </Box>
       <Box sx={{display: 'flex', flexDirection:large ? 'row' : 'column'}}>
         <MealType returnValue={returnValue} setReturnValue={setReturnValue}/>
