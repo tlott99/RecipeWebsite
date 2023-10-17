@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 main {
   text-align: center;
   vertical-align: center;
@@ -21,15 +26,9 @@ parent {
 .backgroundGrey{
   background-color:lightgrey
 }
-.onested{
-  margin-left: 1rem;
-}
-.title{
-  margin-top: 2rem;
-}
-.thnested{
-  margin-left: 3rem;
-}
 .backgroundLightBlue{
   background-color: lightblue;
+}
+.container{
+  padding: 0 3rem;
 }

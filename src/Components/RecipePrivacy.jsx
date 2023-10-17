@@ -5,7 +5,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-export default function RecipePrivacy(privacy, setPrivacy) {
+export default function RecipePrivacy({privacy, setPrivacy}) {
+  const handlePrivacyChange = (event) =>{
+    setPrivacy(event.target.value);
+  };
   return (
     <FormControl>
       <FormLabel id="recipe-privacy-settings">Recipe Privacy</FormLabel>
@@ -13,10 +16,13 @@ export default function RecipePrivacy(privacy, setPrivacy) {
         row
         aria-labelledby="recipe-privacy-settings"
         name="row-radio-buttons-group"
+        value={privacy}
+        onChange={handlePrivacyChange}
       >
-        <FormControlLabel value="public" control={<Radio />} label="Personal" />
-        <FormControlLabel value="personal" control={<Radio />} label="Public" />
+        <FormControlLabel value="personal" control={<Radio />} label="Personal" />
+        <FormControlLabel value="public" control={<Radio />} label="Public" />
       </RadioGroup>
     </FormControl>
+    
   );
 }

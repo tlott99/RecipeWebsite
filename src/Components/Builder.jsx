@@ -16,7 +16,7 @@ export default function Builder() {
   const [returnValue, setReturnValue] = useState(['']);
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
-  const [privacy, setPrivacy] = useState('');
+  const [privacy, setPrivacy] = useState('public');
   const large = useMediaQuery('(min-width:1200px)');
 
   return (
@@ -54,6 +54,7 @@ export default function Builder() {
           ingredients={ingredientsList} 
           instructions={instructionsList}
           slug={slug}
+          privacy={privacy}
         />
       </Box>
     </Container>

@@ -2,6 +2,7 @@ import React from 'react';
 import { gql } from 'graphql-tag';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
+import {Container} from '@mui/material';
 
 const displayRecipe = gql`
 query MyQuery($slug: String = "") {
@@ -12,6 +13,7 @@ query MyQuery($slug: String = "") {
       mealType
       title
       description
+      recipePrivacy
     }
   }
 `
@@ -31,47 +33,51 @@ export default function RecipeDisplay(props){
     const ingredientsJson = JSON.parse(recipe.ingredients)
     const instructionsJson = JSON.parse(recipe.instructions)
     const mealTypeJson = JSON.parse(recipe.mealType)
-    const ingredientsString = ingredientsJson.map((ingredientObj) => <p key={ingredientObj.id}>• {ingredientObj.amount} {ingredientObj.measurement} {ingredientObj.ingredient}</p>);
-    const instructionsString = instructionsJson.map((instructionObj, index) => <p key={instructionObj.id}>{index+1}. {instructionObj.instruction}</p>);
+    const ingredientsString = ingredientsJson.map((ingredientObj, index) => <p key={index}>• {ingredientObj.amount} {ingredientObj.measurement} {ingredientObj.ingredient}</p>);
+    const instructionsString = instructionsJson.map((instructionObj, index) => <p key={index}>{index+1}. {instructionObj.instruction}</p>);
     const turnPrint = () => {
       props.turnPrint();
     }
     const onPrint = () => {
       props.onPrint();
     }
-
     return(
-        <body class="thnested" style={{marginLeft: "3rem", padding:0}}>
-            <h3 class="title">{recipe.title}</h3>
-            <h3 class="onested title">Meal Type: {mealTypeJson.checkedMeal}</h3>
-            <h3 class="onested title">Recipe Description</h3>
-            <p class="thnested">{recipe.description}</p>
-            <h3 class="onested title">Ingredients:</h3>
-            <p class="thnested">{ingredientsString}</p>
-            <h3 class="onested title">Instructions:</h3>
-            <p class= "thnested">{instructionsString}</p>
+      <div className="container">
+        <div>
+            <h3 className="mt-8">{recipe.title}</h3>
+            <h3 className="ml-4 mt-8">Recipe Privacy:</h3>
+            <p className="ml-12">{recipe.recipePrivacy}</p>
+            <h3 className="ml-4 mt-8">Meal Type:</h3>
+            <p className="ml-12">{mealTypeJson.checkedMeal}</p>
+            <h3 className="oml-4 mt-8">Recipe Description</h3>
+            <p className="ml-12">{recipe.description}</p>
+            <h3 className="ml-4 mt-8">Ingredients:</h3>
+            <div className="ml-12">{ingredientsString}</div>
+            <h3 className="ml-4 mt-8">Instructions:</h3>
+            <div className= "ml-12">{instructionsString}</div>
 
         <footer style={{ display: 'flex', width: '15%', justifyContent: "center",
               margin: "auto",}}>
             <div className="button-container" spacing={2} direction="row" style={{
               width:'98%',
               justifyContent: "center",
-              '@media screen and (max-width: 600px)': {
+              '@media screen and (maxWidth: 600px)': {
               flexDirection: 'column',
               alignItems: 'center',
               }
               }}>
-              <button class="backgroundLightBlue" onClick={turnPrint} style={{
-              '@media screen and (max-width: 600px)': {
+              <button className="backgroundLightBlue" onClick={turnPrint} style={{
+              '@media screen and (maxWidth: 600px)': {
                 maxWidth: '100%',
                 minWidth: 'unset',
               }}}>Turn on Print Mode</button>
-              <button class="lightblue" onClick={onPrint} style={{
-                '@media screen and (max-width: 600px)': {
+              <button className="lightblue" onClick={onPrint} style={{
+                '@media screen and (maxWidth: 600px)': {
                 width: '100%',
               }}}>Print</button>
             </div>
-        </footer>
-        </body>
+          </footer>
+        </div>
+      </div>
     )
 }
