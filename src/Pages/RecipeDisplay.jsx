@@ -42,20 +42,30 @@ export default function RecipeDisplay(props){
       props.onPrint();
     }
     return(
-      <div className="container">
+      <div className="container justify-center col-span-6">
         <div>
-            <h3 className="mt-8">{recipe.title}</h3>
-            <h3 className="ml-4 mt-8">Recipe Privacy:</h3>
-            <p className="ml-12">{recipe.recipePrivacy}</p>
-            <h3 className="ml-4 mt-8">Meal Type:</h3>
-            <p className="ml-12">{mealTypeJson.checkedMeal}</p>
-            <h3 className="oml-4 mt-8">Recipe Description</h3>
+          <div class="flex flex-col text-center">
+            <h2 className="mt-8 text-2xl">{recipe.title}</h2>
+            <div class="flex flex-row justify-center">
+              <div>
+              <h3 className="ml-4 mt-8">Recipe Privacy:</h3>
+              <p className="ml-12">{recipe.recipePrivacy}</p>
+              </div>
+              <div>
+              <h3 className="ml-4 mt-8">Meal Type:</h3>
+              <p className="ml-12">{mealTypeJson.checkedMeal}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 className="ml-4 mt-8">Recipe Description</h3>
             <p className="ml-12">{recipe.description}</p>
             <h3 className="ml-4 mt-8">Ingredients:</h3>
             <div className="ml-12">{ingredientsString}</div>
             <h3 className="ml-4 mt-8">Instructions:</h3>
             <div className= "ml-12">{instructionsString}</div>
-
+          </div>
+        </div>
         <footer style={{ display: 'flex', width: '15%', justifyContent: "center",
               margin: "auto",}}>
             <div className="button-container" spacing={2} direction="row" style={{
@@ -77,7 +87,7 @@ export default function RecipeDisplay(props){
               }}}>Print</button>
             </div>
           </footer>
-        </div>
+        
       </div>
     )
 }

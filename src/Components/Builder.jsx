@@ -21,7 +21,7 @@ export default function Builder() {
 
   return (
     
-    <Container>
+    <div className="container">
       <Box sx={{mt:6}}>
         <Title title={title} setTitle={setTitle} slug={slug} setSlug={setSlug} />
       </Box>
@@ -57,6 +57,6 @@ export default function Builder() {
           privacy={privacy}
         />
       </Box>
-    </Container>
+    </div>
   )
 }

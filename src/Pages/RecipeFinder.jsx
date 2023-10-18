@@ -53,7 +53,7 @@ export default function RecipeFinder() {
   
 
   return (
-    <Container >  
+    <div className="container col-span-6 justify-self-center xl:col-start-2 xl:col-span-4">  
       <Typography variant="h2" sx={{mb:3}}>{title}</Typography>
       <FormControl sx={{ mb: 3 }}>
         <InputLabel htmlFor="search-category">Search By</InputLabel>
@@ -110,6 +110,6 @@ export default function RecipeFinder() {
           </Box>
         ))  
       }
-    </Container>
+    </div>
   )
 }

@@ -27,17 +27,12 @@ export default function Home(){
       minHeight: '100vh'
       }}>
       <Header/>
-      <Box 
-        style={{
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        }}>
+      <Box className="justify-center grid flex-1 grid-cols-6">
         <Routes>
-            <Route exact path="*" element={<HomeContent/>}/>
-            <Route exact path="/RecipeBuilder" element={<RecipeBuilder/>}/>
-            <Route exact path="/RecipeFinder" element={<RecipeFinder/>}/>
-            <Route exact path ="/RecipeDisplay/:slug" element={<RecipeDisplay turnPrint={handlePrintMode} onPrint={changePrintMode}/>}/>
+            <Route exact path="*" element={<HomeContent />}/>
+            <Route exact path="/RecipeBuilder" element={<RecipeBuilder />}/>
+            <Route exact path="/RecipeFinder" element={<RecipeFinder />}/>
+            <Route exact path ="/RecipeDisplay/:slug" element={<RecipeDisplay turnPrint={handlePrintMode} onPrint={changePrintMode} />}/>
             <Route exact path="/login" element={<Login/>}/>
         </Routes>
       </Box>

@@ -3,7 +3,7 @@ import { Typography, Button, Box , Container} from "@mui/material";
 export default function HomeContent(){
 
     return(
-        <Container>
+        <Container className="col-span-6">
             <Typography variant="h4" align="center" sx={{mt: 5, display: 'flex', justifyContent: 'center', mb:4}}>
                 Welcome to PutRecipeHere()
             </Typography>
