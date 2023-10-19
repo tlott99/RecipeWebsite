@@ -1,13 +1,13 @@
-import {React, useState} from 'react'
+import {React} from 'react'
 import {Box} from '@mui/material'
 import {Routes, Route} from "react-router-dom";
 import RecipeBuilder from './RecipeBuilder';
 import RecipeFinder from './RecipeFinder';
-import HomeContent from '../Components/HomeContent';
+import HomeContent from '../Components/Content/HomeContent';
 import RecipeDisplay from './RecipeDisplay';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
-import Login from '../Components/Login';
+import Header from '../Components/partials/Header';
+import Footer from '../Components/partials/Footer';
+import Login from './Login';
 import PrintMode from './PrintMode';
 
 

@@ -1,4 +1,4 @@
-import { Typography, Button, Box , Container} from "@mui/material";
+import { Typography, Button, Container} from "@mui/material";
 
 export default function HomeContent(){
 

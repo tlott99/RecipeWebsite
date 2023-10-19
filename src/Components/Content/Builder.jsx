@@ -1,12 +1,12 @@
 import { React, useState} from "react";
-import Ingredients from "./Ingredients";
-import Instructions from "./Instructions";
-import MealType from "./MealType";
-import Description from "./Description";
-import SubmitButton from "./SubmitButton";
-import Title from "./Title";
-import {Container, Box, useMediaQuery} from "@mui/material";
-import RecipePrivacy from "./RecipePrivacy";
+import Ingredients from "../Ingredients";
+import Instructions from "../Instructions";
+import MealType from "../MealType";
+import Description from "../Description";
+import SubmitButton from "../SubmitButton";
+import Title from "../Title";
+import {Box, useMediaQuery} from "@mui/material";
+import RecipePrivacy from "../RecipePrivacy";
 
 
 export default function Builder() {
