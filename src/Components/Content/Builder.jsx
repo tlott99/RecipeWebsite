@@ -1,28 +1,34 @@
 import { React, useState} from "react";
-import Ingredients from "./Ingredients";
-import Instructions from "./Instructions";
-import MealType from "./MealType";
-import Description from "./Description";
-import Box from '@mui/material/Box';
-import SubmitButton from "./SubmitButton";
-import Title from "./Title";
+import Ingredients from "../Ingredients";
+import Instructions from "../Instructions";
+import MealType from "../MealType";
+import Description from "../Description";
+import SubmitButton from "../SubmitButton";
+import Title from "../Title";
+import {Box, useMediaQuery} from "@mui/material";
+import RecipePrivacy from "../RecipePrivacy";
 
 
 export default function Builder() {
-  const [ingredientsList, setIngredientsList] = useState([])
-  const [instructionsList, setInstructionsList] = useState([])
-  const [description, setDescription] = useState([''])
-  const [returnValue, setReturnValue] = useState([''])
-  const [title, setTitle] = useState('')
+  const [ingredientsList, setIngredientsList] = useState([]);
+  const [instructionsList, setInstructionsList] = useState([]);
+  const [description, setDescription] = useState(['']);
+  const [returnValue, setReturnValue] = useState(['']);
+  const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
-  
+  const [privacy, setPrivacy] = useState('public');
+  const large = useMediaQuery('(min-width:1200px)');
+
   return (
     
-    <Box>
+    <div className="container">
       <Box sx={{mt:6}}>
         <Title title={title} setTitle={setTitle} slug={slug} setSlug={setSlug} />
       </Box>
-      <Box>
+      <Box sx={{mt:6}}>
+        <RecipePrivacy privacy={privacy} setPrivacy={setPrivacy}/>
+      </Box>
+      <Box sx={{display: 'flex', flexDirection:large ? 'row' : 'column'}}>
         <MealType returnValue={returnValue} setReturnValue={setReturnValue}/>
       </Box>
       <Box>
@@ -48,8 +54,9 @@ export default function Builder() {
           ingredients={ingredientsList} 
           instructions={instructionsList}
           slug={slug}
+          privacy={privacy}
         />
       </Box>
-    </Box>
+    </div>
   )
 }

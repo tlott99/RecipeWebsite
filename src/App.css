@@ -1,7 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 main {
   text-align: center;
   vertical-align: center;
   line-height: 100vh
+}
+body{
+  margin: 0
 }
 parent {
     width: 100%;
@@ -14,4 +22,13 @@ parent {
     width: 15%;
     height: 40%;
     background-color:white
+}
+.backgroundGrey{
+  background-color:lightgrey
+}
+.backgroundLightBlue{
+  background-color: lightblue;
+}
+.container{
+  padding: 0 3rem;
 }

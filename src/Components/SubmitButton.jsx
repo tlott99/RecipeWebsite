@@ -1,6 +1,6 @@
 import {React} from 'react';
 import {Button,Box} from '@mui/material';
-import { gql } from 'apollo-boost';
+import { gql } from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 
 const CreateRecipes = gql`
@@ -10,7 +10,8 @@ mutation createRecipe(
     $instructions: String!, 
     $mealType: String!,
     $description: String!,
-    $slug: String
+    $slug: String,
+    $recipePrivacy: String!
   ) 
   {
   createRecipe(
@@ -20,7 +21,8 @@ mutation createRecipe(
     instructions: $instructions, 
     mealType: $mealType,
     description: $description,
-    slug: $slug
+    slug: $slug,
+    recipePrivacy: $recipePrivacy,
     }
   ) 
   {
@@ -30,6 +32,7 @@ mutation createRecipe(
       mealType
       description
       id
+      recipePrivacy
   }
   }
 `
@@ -44,7 +47,7 @@ mutation publishRecipe($id: ID){
 `
 
 
-export default function SubmitButton({title, mealType, description, ingredients, instructions, slug}){
+export default function SubmitButton({title, mealType, description, ingredients, instructions, slug, privacy}){
   const [addRecipes, { loading, error, data }] = useMutation(CreateRecipes);
   const [publishRecipe] = useMutation(PublishRecipes);
 
@@ -67,7 +70,8 @@ export default function SubmitButton({title, mealType, description, ingredients,
           ingredients: newIngredients,
           instructions: newInstructions,
           description: description,
-          slug: newSlug
+          slug: newSlug,
+          recipePrivacy: privacy
         },
       })
       console.log(result)
@@ -86,7 +90,7 @@ export default function SubmitButton({title, mealType, description, ingredients,
   
   return(
     <Box>
-      <Button variant="outlined" onClick={AddRecipe } sx={{mt:3}}> Submit </Button>
+      <Button variant="outlined" onClick={AddRecipe } sx={{mt:3, mb:4}}> Submit </Button>
     </Box>
   )
 }

@@ -14,7 +14,7 @@ export default function Title({title, setTitle, slug, setSlug}){
               defaultValue={''}
               onChange={handleTitleChange}
               label="Add New Title"
-              sx={{mt:2, ml:3}}
+              sx={{mt:2, ml:3, width:"30%"}}
         />
     
     </Box>

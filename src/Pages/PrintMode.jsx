@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { gql } from 'graphql-tag';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
@@ -13,19 +13,37 @@ query MyQuery($slug: String = "") {
       title
       description
       recipePrivacy
-      slug
     }
   }
 `
 
-export default function RecipeDisplay(props){
+export default function PrintMode(){
+
     const params = useParams();
     const slug = params.slug
+
+    useEffect(() => {
+      const headerElements = document.querySelectorAll('.header');
+      const footerElements = document.querySelectorAll('.footer');
+      headerElements.forEach((element) => {
+        element.style.display = 'none';
+      });
+      footerElements.forEach((element) => {
+        element.style.display = 'none';
+      });
+    }, []);
+  
     const { loading, error, data } = useQuery(displayRecipe, {
         variables: { slug:slug },
       });
-
-   
+    const handlePrint = ()=>{
+        window.print();
+    }
+    useEffect(() => {
+      if (data && data.recipes) {
+        handlePrint();
+      }
+    }, [data]);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(  </p>;
 
@@ -35,17 +53,13 @@ export default function RecipeDisplay(props){
     const mealTypeJson = JSON.parse(recipe.mealType)
     const ingredientsString = ingredientsJson.map((ingredientObj, index) => <p key={index}>• {ingredientObj.amount} {ingredientObj.measurement} {ingredientObj.ingredient}</p>);
     const instructionsString = instructionsJson.map((instructionObj, index) => <p key={index}>{index+1}. {instructionObj.instruction}</p>);
-    const handlePrint = () =>{
-      const recipeSlug = recipe.slug
-      window.open(`/print/${recipeSlug}`)
-    }
+
     return(
       <div className="container justify-center col-span-6 xl:col-start-2 xl:col-span-4">
         <div>
           <div className="flex flex-col text-center">
             <div className="flex flex-row justify-center">
               <h2 className="mt-8 text-2xl">{recipe.title}</h2>
-              <button className="border" onClick={handlePrint}>Print</button>
             </div>
             <div className="flex flex-row justify-center">
               <div>
@@ -69,4 +83,5 @@ export default function RecipeDisplay(props){
         </div>
       </div>
     )
+    
 }
