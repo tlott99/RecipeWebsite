@@ -1,12 +1,15 @@
 import { React, useState} from "react";
-import Ingredients from "../Ingredients";
-import Instructions from "../Instructions";
-import MealType from "../MealType";
-import Description from "../Description";
-import SubmitButton from "../SubmitButton";
-import Title from "../Title";
+import Ingredients from "../RecipeBuilderPieces/Ingredients";
+import Instructions from "../RecipeBuilderPieces/Instructions";
+import MealType from "../RecipeBuilderPieces/MealType";
+import Description from "../RecipeBuilderPieces/Description";
+import SubmitButton from "../RecipeBuilderPieces/SubmitButton";
+import Title from "../RecipeBuilderPieces/Title";
 import {Box, useMediaQuery} from "@mui/material";
-import RecipePrivacy from "../RecipePrivacy";
+import RecipePrivacy from "../RecipeBuilderPieces/RecipePrivacy";
+import PrepTime from "../RecipeBuilderPieces/PrepTime";
+import CookTime from "../RecipeBuilderPieces/CookTime";
+import ServingSize from "../RecipeBuilderPieces/ServingSize";
 
 
 export default function Builder() {
@@ -17,6 +20,9 @@ export default function Builder() {
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
   const [privacy, setPrivacy] = useState('public');
+  const [prepTime, setPrepTime] = useState('');
+  const [cookTime, setCookTime] = useState('');
+  const [servingSize, setServingSize] = useState('');
   const large = useMediaQuery('(min-width:1200px)');
 
   return (
@@ -31,6 +37,11 @@ export default function Builder() {
       <Box sx={{display: 'flex', flexDirection:large ? 'row' : 'column'}}>
         <MealType returnValue={returnValue} setReturnValue={setReturnValue}/>
       </Box>
+      <div className="flex flex-row space-x-8 mt-6">
+        <Box><PrepTime prepTime={prepTime} setPrepTime={setPrepTime}/></Box>
+        <Box><CookTime cookTime={cookTime} setCookTime={setCookTime}/></Box>
+        <Box><ServingSize servingSize={servingSize} setServingSize={setServingSize}/></Box>
+      </div>
       <Box>
         <Description description={description} setDescription={setDescription}/>
       </Box>
@@ -55,6 +66,9 @@ export default function Builder() {
           instructions={instructionsList}
           slug={slug}
           privacy={privacy}
+          prepTime={prepTime}
+          cookTime={cookTime}
+          servingSize={servingSize}
         />
       </Box>
     </div>

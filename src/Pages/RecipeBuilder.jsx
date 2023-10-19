@@ -1,5 +1,5 @@
 import React from 'react';
-import Builder from '../Components/Content/Builder'
+import Builder from '../Components/PageContent/Builder'
 import { Box } from '@mui/material';
 
 export default function RecipeBuilder() {

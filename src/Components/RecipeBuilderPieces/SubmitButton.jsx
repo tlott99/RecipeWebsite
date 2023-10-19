@@ -12,6 +12,9 @@ mutation createRecipe(
     $description: String!,
     $slug: String,
     $recipePrivacy: String!
+    $prepTime: Int!
+    $cookTime: Int!
+    $servingSize: Int!
   ) 
   {
   createRecipe(
@@ -23,6 +26,9 @@ mutation createRecipe(
     description: $description,
     slug: $slug,
     recipePrivacy: $recipePrivacy,
+    cookTime: $cookTime,
+    prepTime: $prepTime,
+    servingSize: $servingSize,
     }
   ) 
   {
@@ -33,6 +39,9 @@ mutation createRecipe(
       description
       id
       recipePrivacy
+      cookTime
+      prepTime
+      servingSize
   }
   }
 `
@@ -47,7 +56,7 @@ mutation publishRecipe($id: ID){
 `
 
 
-export default function SubmitButton({title, mealType, description, ingredients, instructions, slug, privacy}){
+export default function SubmitButton({title, mealType, description, ingredients, instructions, slug, privacy, cookTime, prepTime, servingSize}){
   const [addRecipes, { loading, error, data }] = useMutation(CreateRecipes);
   const [publishRecipe] = useMutation(PublishRecipes);
 
@@ -60,6 +69,19 @@ export default function SubmitButton({title, mealType, description, ingredients,
   const newInstructions = JSON.stringify(instructions)
   const newSlug = newTitle.replace(/\s+/g, '-').toLowerCase()
 
+  const checkRecipe= ()=>{
+    console.log(newTitle)
+    console.log(newMealType)
+    console.log(description)
+    console.log(newIngredients)
+    console.log(newInstructions)
+    console.log(newSlug)
+    console.log(privacy)
+    console.log(cookTime)
+    console.log(prepTime)
+    console.log(servingSize)
+
+  }
   const AddRecipe = async (e) => {
     e.preventDefault();
     try {
@@ -71,7 +93,10 @@ export default function SubmitButton({title, mealType, description, ingredients,
           instructions: newInstructions,
           description: description,
           slug: newSlug,
-          recipePrivacy: privacy
+          recipePrivacy: privacy,
+          cookTime: cookTime,
+          prepTime: prepTime,
+          servingSize: servingSize,
         },
       })
       console.log(result)
@@ -90,6 +115,7 @@ export default function SubmitButton({title, mealType, description, ingredients,
   
   return(
     <Box>
+      <Button onClick={checkRecipe}> Check</Button>
       <Button variant="outlined" onClick={AddRecipe } sx={{mt:3, mb:4}}> Submit </Button>
     </Box>
   )

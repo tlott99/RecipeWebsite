@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Select, FormControl, MenuItem, InputLabel, Box} from '@mui/material';
 
-export default function BasicSelect({measurement, setMeasurement}) {
+export default function MeasurementType({measurement, setMeasurement}) {
   const handleChange = (event) => {
     setMeasurement(event.target.value);
   };
@@ -9,10 +9,10 @@ export default function BasicSelect({measurement, setMeasurement}) {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Measurement</InputLabel>
+        <InputLabel id="measurementTypeLabel">Measurement</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          labelId="measurementTypeLabel"
+          id="measurementType"
           value={measurement}
           label="Measurement"
           onChange={handleChange}

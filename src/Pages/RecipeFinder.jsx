@@ -56,7 +56,8 @@ export default function RecipeFinder() {
     <div className="container col-span-6 justify-self-center xl:col-start-2 xl:col-span-4">  
       <Typography variant="h2" sx={{mb:3}}>{title}</Typography>
       <FormControl sx={{ mb: 3 }}>
-        <InputLabel htmlFor="search-category">Search By</InputLabel>
+        <InputLabel
+        className="mb-1">Search By</InputLabel>
         <Select
           value={searchCategory}
           onChange={(e) => setSearchCategory(e.target.value)}
@@ -64,10 +65,9 @@ export default function RecipeFinder() {
         >
           <MenuItem value="title">Title &nbsp;</MenuItem>
           <MenuItem value="mealType">Meal Type</MenuItem>
-          {/* Add more search categories as needed */}
         </Select>
       </FormControl>
-      
+
       <TextField 
        label={
         <>
