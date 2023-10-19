@@ -8,7 +8,7 @@ export default function Header() {
     const large = useMediaQuery('(min-width:1200px)');
     
 return(
-    <Box>
+    <Box className="header">
       <Grid container className="backgroundGrey" style={{ pt: 6 }}>
         <Grid item xs={12} lg={4}>
           <Box

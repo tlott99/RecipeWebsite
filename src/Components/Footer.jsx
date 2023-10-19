@@ -6,7 +6,7 @@ export default function Footer() {
     const medium = useMediaQuery('(min-width:900px)');
     const large = useMediaQuery('(min-width:1200px)');
 return(
-    <div style={{marginTop:8}}>
+    <div className="footer" style={{marginTop:8}}>
         <Grid container className="backgroundGrey" style={{pt:6}}>
             <Grid item sx={{pb:3}} xs={12}>
                 <Box sx={{display:'flex', flexDirection: 'column'}}>
