@@ -69,19 +69,6 @@ export default function SubmitButton({title, mealType, description, ingredients,
   const newInstructions = JSON.stringify(instructions)
   const newSlug = newTitle.replace(/\s+/g, '-').toLowerCase()
 
-  const checkRecipe= ()=>{
-    console.log(newTitle)
-    console.log(newMealType)
-    console.log(description)
-    console.log(newIngredients)
-    console.log(newInstructions)
-    console.log(newSlug)
-    console.log(privacy)
-    console.log(cookTime)
-    console.log(prepTime)
-    console.log(servingSize)
-
-  }
   const AddRecipe = async (e) => {
     e.preventDefault();
     try {
@@ -115,7 +102,6 @@ export default function SubmitButton({title, mealType, description, ingredients,
   
   return(
     <Box>
-      <Button onClick={checkRecipe}> Check</Button>
       <Button variant="outlined" onClick={AddRecipe } sx={{mt:3, mb:4}}> Submit </Button>
     </Box>
   )
