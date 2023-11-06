@@ -1,30 +1,12 @@
 import React from 'react';
-import { gql } from 'graphql-tag';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-
-const displayRecipe = gql`
-query MyQuery($slug: String = "") {
-    recipes(where: {slug: $slug}) {
-      id
-      ingredients
-      instructions
-      mealType
-      title
-      description
-      recipePrivacy
-      slug
-      cookTime
-      prepTime
-      servingSize
-    }
-  }
-`
+import {DISPLAY_QUERY} from '../graphQLQuery';
 
 export default function RecipeDisplay(props){
     const params = useParams();
     const slug = params.slug
-    const { loading, error, data } = useQuery(displayRecipe, {
+    const { loading, error, data } = useQuery(DISPLAY_QUERY, {
         variables: { slug:slug },
       });
 

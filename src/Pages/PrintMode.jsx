@@ -1,24 +1,8 @@
 import React, {useEffect} from 'react';
-import { gql } from 'graphql-tag';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
+import {PRINT_QUERY} from '../graphQLQuery';
 
-const displayRecipe = gql`
-query MyQuery($slug: String = "") {
-    recipes(where: {slug: $slug}) {
-      id
-      ingredients
-      instructions
-      mealType
-      title
-      description
-      recipePrivacy
-      cookTime
-      prepTime
-      servingSize
-    }
-  }
-`
 
 export default function PrintMode(){
 
@@ -36,7 +20,7 @@ export default function PrintMode(){
       });
     }, []);
   
-    const { loading, error, data } = useQuery(displayRecipe, {
+    const { loading, error, data } = useQuery(PRINT_QUERY, {
         variables: { slug:slug },
       });
     const handlePrint = ()=>{

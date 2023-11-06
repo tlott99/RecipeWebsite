@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
+import { useMutation } from "@apollo/client";
+import { LOGIN_MUTATION } from "../graphQLQuery";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -15,7 +17,7 @@ export default function Login() {
   }
 
   return (
-    <div className="Login">
+    <div className="col-span-2 col-start-3 Login my-32">
       <form onSubmit={handleSubmit}>
         <TextField
           fullWidth

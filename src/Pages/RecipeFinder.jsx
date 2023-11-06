@@ -1,25 +1,12 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'graphql-tag';
 import { Typography, Box, Button, TextField, FormControl, InputLabel, Select, MenuItem} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import {FINDER_QUERY} from '../graphQLQuery';
 
-const getRecipes = gql`
-query Recipes{
-  recipes(first : 100) {
-    ingredients
-    instructions
-    description
-    mealType
-    title
-    slug
-    id
-  }
-}
-`
 
 export default function RecipeFinder() {
-  const { loading, error, data } = useQuery(getRecipes);
+  const { loading, error, data } = useQuery(FINDER_QUERY);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchCategory, setSearchCategory] = useState('title');
   const [typeSearch, setTypeSearch] = useState('Breakfast'); 
