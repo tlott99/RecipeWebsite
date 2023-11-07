@@ -1,25 +1,12 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'graphql-tag';
 import { Typography, Box, Button, TextField, FormControl, InputLabel, Select, MenuItem} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import {FINDER_QUERY} from '../graphQLQuery';
 
-const getRecipes = gql`
-query Recipes{
-  recipes(first : 100) {
-    ingredients
-    instructions
-    description
-    mealType
-    title
-    slug
-    id
-  }
-}
-`
 
 export default function RecipeFinder() {
-  const { loading, error, data } = useQuery(getRecipes);
+  const { loading, error, data } = useQuery(FINDER_QUERY);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchCategory, setSearchCategory] = useState('title');
   const [typeSearch, setTypeSearch] = useState('Breakfast'); 
@@ -56,7 +43,8 @@ export default function RecipeFinder() {
     <div className="container col-span-6 justify-self-center xl:col-start-2 xl:col-span-4">  
       <Typography variant="h2" sx={{mb:3}}>{title}</Typography>
       <FormControl sx={{ mb: 3 }}>
-        <InputLabel htmlFor="search-category">Search By</InputLabel>
+        <InputLabel
+        className="mb-1">Search By</InputLabel>
         <Select
           value={searchCategory}
           onChange={(e) => setSearchCategory(e.target.value)}
@@ -64,10 +52,9 @@ export default function RecipeFinder() {
         >
           <MenuItem value="title">Title &nbsp;</MenuItem>
           <MenuItem value="mealType">Meal Type</MenuItem>
-          {/* Add more search categories as needed */}
         </Select>
       </FormControl>
-      
+
       <TextField 
        label={
         <>

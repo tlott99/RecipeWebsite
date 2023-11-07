@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import {Box, Button, Stack, TextField, Typography} from '@mui/material';
-import BasicSelect from "./BasicSelect"
+import MeasurementType from "./MeasurementType"
 
 export default function Ingredients({ingredientsList, setIngredientsList }) {
   const [measurement, setMeasurement] = useState(['']);
@@ -35,7 +35,7 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
               onChange={handleAmountChange}
               label="Amount"
             />
-            <BasicSelect 
+            <MeasurementType 
               measurement={measurement} 
               setMeasurement={setMeasurement} 
             />
