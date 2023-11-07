@@ -1,31 +1,29 @@
-import {React} from 'react'
-import {Stack, Box, Button, Typography, useMediaQuery, Grid} from '@mui/material'
-
+import React from 'react';
+import {Stack, Box, Button, Typography, useMediaQuery, Grid} from '@mui/material';
+import LoginDropdown from './LoginDropdown';
 
 export default function Header() {
     const small = useMediaQuery('(min-width:600px)');
     const medium = useMediaQuery('(min-width:900px)');
     const large = useMediaQuery('(min-width:1200px)');
+
+
     
 return(
     <Box className="header">
       <Grid container className="backgroundGrey" style={{ pt: 6 }}>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12}>
           <Box
             sx={{
               display: 'flex',
-              justifyContent: large ? 'left' : 'center',
-              alignItems: small ? 'center' : 'flex-start', // Align to the top on small screens
+              justifyContent:'right',
+              alignItems:'center', 
             }}
           >
-            {large ? (
-              <Button href="/login" variant="contained">
-                Login
-              </Button>
-            ) : null}
+          <LoginDropdown/>
           </Box>
         </Grid>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12}>
           <Typography
             variant="h2"
             align="center"
@@ -34,23 +32,19 @@ return(
             PutRecipeHere()
           </Typography>
         </Grid>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12}>
           <Stack
             spacing={2}
             direction="row"
             sx={{
               pt: 1,
               display: 'flex',
-              justifyContent: large ? 'right' : 'center',
+              justifyContent:'center',
               alignItems: small ? 'center' : 'flex-start', // Align to the top on small screens
               marginBottom: 3,
               height: '30px',
             }}
           >
-            {large ? (null) :       
-            <Button href="/login" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
-            Login
-            </Button>}
             <Button href="/" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
               Home
             </Button>
