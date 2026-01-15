@@ -1,17 +1,17 @@
-## Running React on Repl.it
+Currently published at https://putrecipehere.netlify.app/
 
-[React](https://reactjs.org/) is a popular JavaScript library for building user interfaces.
+#Running localhost
+npm install
+npm update
+npm start
 
-[Vite](https://vitejs.dev/) is a blazing fast frontend build tool that includes features like Hot Module Reloading (HMR), optimized builds, and TypeScript support out of the box.
+#mui
+https://mui.com/components/
 
-Using the two in conjunction is one of the fastest ways to build a web app.
+#todos
+2. Look into a login more
 
-### Getting Started
-- Hit run
-- Edit [App.jsx](#src/App.jsx) and watch it live update!
-
-By default, Replit runs the `dev` script, but you can configure it by changing the `run` field in the [configuration file](#.replit). Here are the vite docs for [serving production websites](https://vitejs.dev/guide/build.html)
-
-### Typescript
-
-Just rename any file from `.jsx` to `.tsx`. You can also try our [TypeScript Template](https://replit.com/@replit/React-TypeScript)
+6. create a better home page
+    maybe some pictures, more than just white coloring, more stuff on it
+7. choose a different typography, and color branding
+8. add an image option for the recipe

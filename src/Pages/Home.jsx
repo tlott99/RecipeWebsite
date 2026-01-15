@@ -1,45 +1,33 @@
-import {React, useState} from 'react'
-import {Stack, Box, Button, Typography} from '@mui/material'
+import {React} from 'react'
+import {Box} from '@mui/material'
 import {Routes, Route} from "react-router-dom";
 import RecipeBuilder from './RecipeBuilder';
 import RecipeFinder from './RecipeFinder';
-import MainPages from './MainPages';
+import HomeContent from '../Components/PageContent/HomeContent';
 import RecipeDisplay from './RecipeDisplay';
+import Header from '../Components/partials/Header';
+import Footer from '../Components/partials/Footer';
+import PrintMode from './PrintMode';
 
 
 export default function Home(){
-  const[printMode, setPrintMode] = useState(false)
-
-  const handlePrintMode = () => {
-    setPrintMode(true)
-  }
-  const changePrintMode = () =>{
-    setPrintMode(false)
-    window.print()
-  }
-  
   return(
-    <Box sx={{mt:3}} >
-      <Typography variant="h2" align="center" sx={{mb:3}}>PutRecipeHere()</Typography>
-      {printMode === false &&(
-      <Stack spacing ={2} direction ="row" sx={{display: 'flex', justifyContent: 'center'}}>
-        <Button href="/RecipeFinder" variant="contained">
-          Recipe Finder
-        </Button>
-        <Button href="/" variant="contained">
-          Home
-        </Button>
-            <Button href="/RecipeBuilder" variant="contained">
-          Recipe Builder
-        </Button>
-      </Stack>
-      )}
-    <Routes>
-      <Route exact path="*" element={<MainPages/>}>  </Route>
-      <Route exact path="/RecipeBuilder" element={<RecipeBuilder/>}/>
-      <Route exact path="/RecipeFinder" element={<RecipeFinder/>}/>
-      <Route exact path ="/RecipeDisplay/:slug" element={<RecipeDisplay turnPrint={handlePrintMode} onPrint={changePrintMode}/>}/>
-    </Routes>
+    <Box style={{
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh'
+      }}>
+      <Header/>
+      <Box className="justify-center grid flex-1 grid-cols-6">
+        <Routes>
+          <Route exact path="*" element={<HomeContent />}/>
+          <Route exact path="/RecipeBuilder" element={<RecipeBuilder />}/>
+          <Route exact path="/RecipeFinder" element={<RecipeFinder />}/>
+          <Route exact path ="/RecipeDisplay/:slug" element={<RecipeDisplay/>}/>
+          <Route exact path="/print/:slug" element={<PrintMode />}/>
+        </Routes>
+      </Box>
+      <Footer/>
     </Box>
   )
 }

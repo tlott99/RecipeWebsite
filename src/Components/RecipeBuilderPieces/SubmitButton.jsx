@@ -1,52 +1,12 @@
 import {React} from 'react';
 import {Button,Box} from '@mui/material';
-import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/client';
-
-const CreateRecipes = gql`
-mutation createRecipe(
-    $title: String!, 
-    $ingredients: String!, 
-    $instructions: String!, 
-    $mealType: String!,
-    $description: String!,
-    $slug: String
-  ) 
-  {
-  createRecipe(
-    data:{
-    title: $title, 
-    ingredients: $ingredients, 
-    instructions: $instructions, 
-    mealType: $mealType,
-    description: $description,
-    slug: $slug
-    }
-  ) 
-  {
-      title
-      ingredients
-      instructions
-      mealType
-      description
-      id
-  }
-  }
-`
-const PublishRecipes = gql`
-mutation publishRecipe($id: ID){
-  publishRecipe(
-    where: { id: $id }
-  ) {
-    id
-  }
-}
-`
+import {CREATE_MUTATION, PUBLISH_MUTATION} from '../../graphQLQuery';
 
 
-export default function SubmitButton({title, mealType, description, ingredients, instructions, slug}){
-  const [addRecipes, { loading, error, data }] = useMutation(CreateRecipes);
-  const [publishRecipe] = useMutation(PublishRecipes);
+export default function SubmitButton({title, mealType, description, ingredients, instructions, slug, privacy, cookTime, prepTime, servingSize}){
+  const [addRecipes, { loading, error, data }] = useMutation(CREATE_MUTATION);
+  const [publishRecipe] = useMutation(PUBLISH_MUTATION);
 
   if (loading) return <p>Loading...</p>;
   if (error) return console.log(error);
@@ -67,7 +27,11 @@ export default function SubmitButton({title, mealType, description, ingredients,
           ingredients: newIngredients,
           instructions: newInstructions,
           description: description,
-          slug: newSlug
+          slug: newSlug,
+          recipePrivacy: privacy,
+          cookTime: cookTime,
+          prepTime: prepTime,
+          servingSize: servingSize,
         },
       })
       console.log(result)
@@ -86,7 +50,7 @@ export default function SubmitButton({title, mealType, description, ingredients,
   
   return(
     <Box>
-      <Button variant="outlined" onClick={AddRecipe } sx={{mt:3}}> Submit </Button>
+      <Button variant="outlined" onClick={AddRecipe } sx={{mt:3, mb:4}}> Submit </Button>
     </Box>
   )
 }

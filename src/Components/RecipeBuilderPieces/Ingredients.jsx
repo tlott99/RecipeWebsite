@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import {Box, Button, Stack, TextField, Typography} from '@mui/material';
-import BasicSelect from "./BasicSelect"
+import MeasurementType from "./MeasurementType"
 
 export default function Ingredients({ingredientsList, setIngredientsList }) {
   const [measurement, setMeasurement] = useState(['']);
@@ -16,6 +16,11 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
   const handleIngredientChange = (event) => {
     setNewIngredient(event.target.value)
   }
+  const handleIngredientRemove = (index) => {
+    const updatedIngredients = [...ingredientsList];
+    updatedIngredients.splice(index, 1);
+    setIngredientsList(updatedIngredients);
+  }
   const handleAmountChange = (event) => {
     setAmount(event.target.value);
   };
@@ -30,7 +35,7 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
               onChange={handleAmountChange}
               label="Amount"
             />
-            <BasicSelect 
+            <MeasurementType 
               measurement={measurement} 
               setMeasurement={setMeasurement} 
             />
@@ -49,7 +54,15 @@ export default function Ingredients({ingredientsList, setIngredientsList }) {
       <Box sx={{ml:2}}>
         {ingredientsList.map((ingredient, index) => (
           <ul key={index}>
-            {ingredient.ingredient && <li>{ingredient.amount} {ingredient.measurement} {ingredient.ingredient}</li>}
+            {ingredient.ingredient && <li>{ingredient.amount} {ingredient.measurement} {ingredient.ingredient} 
+            <Button
+                  variant="outlined"
+                  onClick={() => handleIngredientRemove(index)}
+                  sx={{ml:1}}
+                >
+                  Remove
+                </Button>
+                </li>}
           </ul>
         ))}
       </Box>

@@ -13,7 +13,8 @@ export default function Description({description, setDescription}){
         defaultValue={''}
         onChange={handleDescriptionChange}
         label="Add New Description"
-        sx={{mt:2, ml:3}}
+        multiline
+        sx={{mt:2, ml:3, width:"50%"}}
       />
     </Box>
   )
