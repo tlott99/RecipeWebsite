@@ -1,13 +1,16 @@
 import NewCheckbox from "./Checkbox";
-import { React } from 'react';
-import {Box, Stack, Typography} from '@mui/material';
+import React from 'react';
 
-export default function MealType({returnValue, setReturnValue}){
+export default function MealType({ returnValue, setReturnValue }) {
+  return (
+    <div className="w-full">
+      {/* h5 equivalent */}
+      <h3 className="text-xl font-semibold text-gray-800 mt-6">
+        Select Meal Type
+      </h3>
 
-  return(
-    <Box>
-      <Typography variant ="h5" sx={{mt:3}}>Select Meal Type</Typography>
-      <Stack spacing ={2} direction ="row" sx={{mt:2, ml:3}}>
+      {/* Stack replacement: Horizontal flex with wrapping for responsiveness */}
+      <div className="flex flex-wrap items-center gap-4 mt-4 ml-6">
         <NewCheckbox 
           x="Breakfast" 
           returnValue={returnValue} 
@@ -33,8 +36,7 @@ export default function MealType({returnValue, setReturnValue}){
           returnValue={returnValue} 
           setReturnValue={setReturnValue}
         />
-      </Stack>
-    </Box>
-
-  )
+      </div>
+    </div>
+  );
 }

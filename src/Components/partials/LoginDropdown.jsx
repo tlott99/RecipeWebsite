@@ -1,46 +1,75 @@
+"use client";
+
 import React from 'react';
 import LoginButton from '../DropdownMenu/LoginButton';
 import LogoutButton from '../DropdownMenu/LogoutButton';
 import Profile from '../DropdownMenu/Profile';
-import { useAuth0 } from "@auth0/auth0-react";
-import { MenuItem, Menu, Button, } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 
 export default function LoginDropdown() {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const { isAuthenticated } = useAuth0();
+    const [isOpen, setIsOpen] = React.useState(false);
+    const { isAuthenticated } = ""
 
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
     };
+
     const handleClose = () => {
-      setAnchorEl(null);
+        setIsOpen(false);
     };
 
-    return(
-        <div>
-            <Button
-            id="basic-button"
-            aria-controls={open ? 'basic-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
+    return (
+        <div className="relative w-md inline-block text-left">
+            <button
+                id="basic-button"
+                aria-haspopup="true"
+                aria-expanded={isOpen}
+                onClick={toggleMenu}
+                className="flex items-center justify-center p-6 rounded-md hover:bg-gray-100 transition-colors"
             >
-                <MenuIcon/>
-            </Button>
-            <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-            'aria-labelledby': 'basic-button',
-            }}
-            >
-            {isAuthenticated ? <MenuItem onClick={handleClose}><Profile/> </MenuItem> : null}
-            <MenuItem onClick={handleClose}>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</MenuItem>
-            </Menu>
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    strokeWidth={1.5} 
+                    stroke="currentColor" 
+                    className="w-6 h-6"
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+            {isOpen && (
+                <>
+                    <div 
+                        className="fixed inset-0 z-10" 
+                        onClick={handleClose}
+                    ></div>
+
+                    <div 
+                        className="absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        id="basic-menu"
+                        role="menu"
+                        aria-labelledby="basic-button"
+                    >
+                        {isAuthenticated && (
+                            <div 
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" 
+                                role="menuitem" 
+                                onClick={handleClose}
+                            >
+                                <Profile />
+                            </div>
+                        )}
+                        
+                        <div 
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" 
+                            role="menuitem" 
+                            onClick={handleClose}
+                        >
+                            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+                        </div>
+                    </div>
+                </>
+            )}
         </div>
-)
+    );
 }

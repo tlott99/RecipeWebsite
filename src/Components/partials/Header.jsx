@@ -1,62 +1,50 @@
 import React from 'react';
-import {Stack, Box, Button, Typography, useMediaQuery, Grid} from '@mui/material';
 import LoginDropdown from './LoginDropdown';
+import Link from 'next/link';
 
 export default function Header() {
-    const small = useMediaQuery('(min-width:600px)');
-    const medium = useMediaQuery('(min-width:900px)');
-    const large = useMediaQuery('(min-width:1200px)');
-
-
-    
-return(
-    <Box className="header">
-      <Grid container className="backgroundGrey" style={{ pt: 6 }}>
-        <Grid item xs={12}>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent:'right',
-              alignItems:'center', 
-            }}
-          >
-          <LoginDropdown/>
-          </Box>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography
-            variant="h2"
-            align="center"
-            sx={{ pb: 3, fontSize: large ? '3.75rem' : medium ? '2.0rem' : '1rem' }}
-          >
-            PutRecipeHere()
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Stack
-            spacing={2}
-            direction="row"
-            sx={{
-              pt: 1,
-              display: 'flex',
-              justifyContent:'center',
-              alignItems: small ? 'center' : 'flex-start', // Align to the top on small screens
-              marginBottom: 3,
-              height: '30px',
-            }}
-          >
-            <Button href="/" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
-              Home
-            </Button>
-            <Button href="/RecipeFinder" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
-              Recipe Finder
-            </Button>
-            <Button href="/RecipeBuilder" variant="contained" sx={{fontSize: large ? '16px' : medium ? '12px' :  '8px'}}>
-              Recipe Builder
-            </Button>
-          </Stack>
-        </Grid>
-      </Grid>
-    </Box>
-)
+    return (
+        <header className="header w-full">
+            <div className="backgroundGrey pt-6 w-full px-4 grid grid-cols-4">
+                <div className="col-start-2 col-span-2">
+                  <div className="w-full text-center">
+                      <h1 className="pb-3 font-bold transition-all
+                          text-[1rem] 
+                          md:text-[2.0rem] 
+                          lg:text-[3.75rem]">
+                          PutRecipeHere()
+                      </h1>
+                  </div>
+                  <nav className="flex flex-row justify-center items-start sm:items-center space-x-2 pt-1 mb-6 h-[30px]">
+                      <Link 
+                          href="/" 
+                          className="bg-blue-600 hover:bg-blue-700 text-white rounded shadow px-4 py-1 transition-all
+                          text-[8px] md:text-[12px] lg:text-[16px]"
+                      >
+                          Home
+                      </Link>
+                      
+                      <Link 
+                          href="/finder" 
+                          className="bg-blue-600 hover:bg-blue-700 text-white rounded shadow px-4 py-1 transition-all
+                          text-[8px] md:text-[12px] lg:text-[16px]"
+                      >
+                          Recipe Finder
+                      </Link>
+                      
+                      <Link 
+                          href="/builder" 
+                          className="bg-blue-600 hover:bg-blue-700 text-white rounded shadow px-4 py-1 transition-all
+                          text-[8px] md:text-[12px] lg:text-[16px]"
+                      >
+                          Recipe Builder
+                      </Link>
+                  </nav>
+                </div>
+                <div className="col-start-4 col-span-1 flex justify-end w-full">
+                    <LoginDropdown />
+                </div>
+            </div>
+        </header>
+    );
 }

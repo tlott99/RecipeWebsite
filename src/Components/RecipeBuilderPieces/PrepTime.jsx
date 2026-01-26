@@ -1,29 +1,41 @@
-import * as React from 'react';
-import {Select, FormControl, MenuItem, InputLabel, Box} from '@mui/material';
+"use client";
 
-export default function PrepTime({prepTime, setPrepTime}) {
+import * as React from 'react';
+
+export default function PrepTime({ prepTime, setPrepTime }) {
   const handleChange = (event) => {
     setPrepTime(event.target.value);
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel htmlFor="prepTime">Prep Time</InputLabel>
-        <Select
-          value={prepTime}
-          label="PrepTime"
-          onChange={handleChange}
-          id="prepTime"
+    <div className="min-w-[120px] w-full">
+      <div className="flex flex-col space-y-1">
+        {/* Label */}
+        <label 
+          htmlFor="prepTime" 
+          className="text-sm font-medium text-gray-700"
         >
-          <MenuItem value={10}>10 Minutes</MenuItem>
-          <MenuItem value={20}>20 Minutes</MenuItem>
-          <MenuItem value={30}>30 Minutes</MenuItem>
-          <MenuItem value={40}>40 Minutes</MenuItem>
-          <MenuItem value={50}>50 Minutes</MenuItem>
-          <MenuItem value={60}>60 Minutes</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+          Prep Time
+        </label>
+
+        {/* Select Input */}
+        <select
+          id="prepTime"
+          value={prepTime}
+          onChange={handleChange}
+          className="block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm 
+                     focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 
+                     sm:text-sm cursor-pointer"
+        >
+          <option value="" disabled>Select time</option>
+          <option value={10}>10 Minutes</option>
+          <option value={20}>20 Minutes</option>
+          <option value={30}>30 Minutes</option>
+          <option value={40}>40 Minutes</option>
+          <option value={50}>50 Minutes</option>
+          <option value={60}>60 Minutes</option>
+        </select>
+      </div>
+    </div>
   );
 }

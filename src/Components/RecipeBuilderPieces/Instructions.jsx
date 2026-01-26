@@ -1,60 +1,82 @@
+"use client";
+
 import { React, useState } from "react";
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 
-
-export default function Instructions({instructionsList, setInstructionsList }) {
-  const [newInstruction, setNewInstruction] = useState('')
+export default function Instructions({ instructionsList, setInstructionsList }) {
+  const [newInstruction, setNewInstruction] = useState('');
   
   const handleInstructionAdd = (event) => {
-    event.preventDefault()
-    const thisInstruction ={
+    event.preventDefault();
+    if (!newInstruction.trim()) return; // Prevent adding empty instructions
+
+    const thisInstruction = {
       instruction: newInstruction
-    }
-    setInstructionsList([...instructionsList, thisInstruction])
-  }
+    };
+    setInstructionsList([...instructionsList, thisInstruction]);
+    setNewInstruction(''); // Clear the input after adding
+  };
+
   const handleInstructionRemove = (index) => {
     const updatedInstructions = [...instructionsList];
     updatedInstructions.splice(index, 1);
     setInstructionsList(updatedInstructions);
-  }
+  };
+
   const handleInstructionChange = (event) => {
-    event.preventDefault()
-    setNewInstruction(event.target.value)
-  }
+    setNewInstruction(event.target.value);
+  };
 
   return (
-    <form className="App" onSubmit={handleInstructionAdd}>
-      <Typography variant="h5" htmlFor="instruction">Add a New Instruction</Typography>
-      <Box>
-      <Stack spacing ={2} direction ="row" sx={{mt:2, ml:3}}>
-        <TextField name="instruction" id="instruction" required
-          defaultValue={''}
-          onChange={handleInstructionChange}
-          label='New Instructions'
-          multiline
-          sx={{width:"50%"}}
-        />
-        <Button variant='outlined' className="add-btn" type="submit" >
-          <span>Add an Instruction</span>
-        </Button> 
-      </Stack>
-      </Box>
-      <Typography variant="h5" sx={{mt:2}}>Instructions</Typography>
-      <Box sx={{ml:2}}>
-        <ol >
+    <form className="mt-6" onSubmit={handleInstructionAdd}>
+      <h3 className="text-xl font-semibold text-gray-800">Add a New Instruction</h3>
+      
+      <div className="flex flex-col md:flex-row items-start gap-4 mt-4 ml-6">
+        <div className="w-full md:w-1/2 flex flex-col space-y-1">
+          <label htmlFor="instruction" className="text-sm font-medium text-gray-600">
+            New Instructions
+          </label>
+          <textarea
+            name="instruction"
+            id="instruction"
+            required
+            value={newInstruction}
+            onChange={handleInstructionChange}
+            rows={3}
+            className="block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm 
+                       focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 
+                       sm:text-sm resize-y"
+            placeholder="Step-by-step instructions..."
+          />
+        </div>
+
+        <button 
+          type="submit" 
+          className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-md text-sm font-medium transition-colors mt-6"
+        >
+          Add an Instruction
+        </button> 
+      </div>
+
+      <h3 className="text-xl font-semibold text-gray-800 mt-8">Instructions</h3>
+      
+      <div className="mt-4 ml-6">
+        <ol className="list-decimal space-y-4">
           {instructionsList.map((instruction, index) => (
-             <li key={index}>{instruction.instruction}
-             <Button
-             variant="outlined"
-             onClick={() => handleInstructionRemove(index)}
-             sx={{ml:1}}
-           >
-             Remove
-           </Button></li>
+            <li key={index} className="text-gray-700 pl-2">
+              <div className="flex items-start justify-between bg-gray-50 p-3 rounded-lg border border-gray-100">
+                <span className="flex-1">{instruction.instruction}</span>
+                <button
+                  type="button"
+                  onClick={() => handleInstructionRemove(index)}
+                  className="ml-4 text-xs text-red-600 hover:text-red-800 border border-red-200 hover:border-red-600 px-2 py-1 rounded transition-all shrink-0"
+                >
+                  Remove
+                </button>
+              </div>
+            </li>
           ))} 
-          </ol>
-      </Box>
+        </ol>
+      </div>
     </form>
   );
 }
-
