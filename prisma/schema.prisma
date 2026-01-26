@@ -1,0 +1,134 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas  = ["public", "recipe_management"]
+}
+
+model all_ingredients {
+  id         Int              @id @default(autoincrement())
+  created_at DateTime?        @db.Timestamp(6)
+  name       String?
+  type       ingredient_type?
+
+  @@schema("recipe_management")
+}
+
+model instructions {
+  id                 Int       @id @default(autoincrement())
+  created_at         DateTime? @db.Timestamp(6)
+  recipe_id          Int?
+  instruction_number Decimal?  @db.Decimal
+  instruction_text   String?
+
+  @@schema("recipe_management")
+}
+
+model recipe_ingredients {
+  id               Int               @id @default(autoincrement())
+  created_at       DateTime?         @db.Timestamp(6)
+  ingredient_id    Int?
+  amount           Decimal?          @db.Decimal
+  recipe_id        Int?
+  measurement_type measurement_type?
+  partial_amount   fractions?
+
+  @@schema("recipe_management")
+}
+
+model recipes {
+  id         Int        @id @default(autoincrement())
+  created_at DateTime?  @db.Timestamp(6)
+  title      String?
+  meal_type  meal_type?
+  cook_time  cook_time?
+  prep_time  prep_time?
+
+  @@schema("recipe_management")
+}
+
+enum cook_time {
+  MIN_10
+  MIN_20
+  MIN_30
+  MIN_40
+  MIN_50
+  MIN_60
+  MIN_00
+
+  @@schema("recipe_management")
+}
+
+enum fractions {
+  F_1_16
+  F_1_8
+  F_3_16
+  F_1_4
+  F_5_16
+  F_1_3
+  F_3_8
+  F_7_16
+  F_1_2
+  F_9_16
+  F_5_8
+  F_2_3
+  F_11_16
+  F_3_4
+  F_13_16
+  F_7_8
+  F_15_16
+
+  @@schema("recipe_management")
+}
+
+enum ingredient_type {
+  Grains___Legumes     @map("Grains & Legumes")
+  Produce__Fresh_      @map("Produce (Fresh)")
+  Dairy___Refrigerated @map("Dairy & Refrigerated")
+  Proteins
+  Pantry_Staples       @map("Pantry Staples")
+  Spices___Seasonings  @map("Spices & Seasonings")
+
+  @@schema("recipe_management")
+}
+
+enum meal_type {
+  Breakfast
+  Lunch
+  Dinner
+  Dessert
+  Drink
+  Snack
+
+  @@schema("recipe_management")
+}
+
+enum measurement_type {
+  Cups
+  Teaspoons
+  Tablespoons
+  Fluid
+  Ounces
+  Pounds
+  None_       @map("/None/")
+  Grams
+  Kilograms
+  Milliliters
+
+  @@schema("recipe_management")
+}
+
+enum prep_time {
+  MIN_10
+  MIN_20
+  MIN_30
+  MIN_40
+  MIN_50
+  MIN_60
+  MIN_00
+
+  @@schema("recipe_management")
+}

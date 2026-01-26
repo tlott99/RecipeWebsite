@@ -1,0 +1,114 @@
+/* [project]/src/App.css [app-client] (css) */
+@layer properties {
+  @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *, :before, :after, ::backdrop {
+      --tw-border-style: solid;
+    }
+  }
+}
+
+.col-span-6 {
+  grid-column: span 6 / span 6;
+}
+
+.container {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-self-center {
+  justify-self: center;
+}
+
+.border {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+main {
+  text-align: center;
+  vertical-align: center;
+  line-height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+parent {
+  white-space: nowrap;
+  width: 100%;
+  height: 70px;
+  overflow-x: auto;
+}
+
+.child {
+  background-color: #fff;
+  width: 15%;
+  height: 40%;
+  display: inline-block;
+}
+
+.backgroundGrey {
+  background-color: #d3d3d3;
+}
+
+.backgroundLightBlue {
+  background-color: #add8e6;
+}
+
+.container {
+  padding: 0 3rem;
+}
+
+#dropdown-content {
+  z-index: 1;
+  background-color: #fff;
+  min-width: 160px;
+  display: none;
+  position: absolute;
+  box-shadow: 0 8px 16px #0003;
+}
+
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+
+/*# sourceMappingURL=src_App_85137021.css.map*/
