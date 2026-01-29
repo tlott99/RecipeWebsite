@@ -15,6 +15,7 @@ export default function RecipeFinder() {
   if (error) return <p>Error :(  </p>;
   const title="All Recipes";
   
+  
   const handleSearch = (e) => {
     const search = e.target.value.toLowerCase();
     setSearchTerm(search);

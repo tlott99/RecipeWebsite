@@ -15,13 +15,13 @@ export default function Header() {
                           PutRecipeHere()
                       </h1>
                   </div>
-                  <nav className="flex flex-row justify-center items-start sm:items-center space-x-2 pt-1 mb-6 h-[30px]">
+                  <nav className="flex flex-row justify-center items-center space-x-2 pt-1 mb-6 h-[30px]">
                       <Link 
                           href="/" 
-                          className="bg-blue-600 hover:bg-blue-700 text-white rounded shadow px-4 py-1 transition-all
-                          text-[8px] md:text-[12px] lg:text-[16px]"
+                          className="bg-blue-600! hover:bg-blue-700 text-white rounded shadow px-4 py-1 text-[8px] md:text-[12px] lg:text-[16px]"
                       >
-                          Home
+                        Home
+                        
                       </Link>
                       
                       <Link 
