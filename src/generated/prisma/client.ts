@@ -59,3 +59,48 @@ export type recipe_ingredients = Prisma.recipe_ingredientsModel
  * 
  */
 export type recipes = Prisma.recipesModel
+/**
+ * Model account
+ * 
+ */
+export type account = Prisma.accountModel
+/**
+ * Model invitation
+ * 
+ */
+export type invitation = Prisma.invitationModel
+/**
+ * Model jwks
+ * 
+ */
+export type jwks = Prisma.jwksModel
+/**
+ * Model member
+ * 
+ */
+export type member = Prisma.memberModel
+/**
+ * Model organization
+ * 
+ */
+export type organization = Prisma.organizationModel
+/**
+ * Model project_config
+ * 
+ */
+export type project_config = Prisma.project_configModel
+/**
+ * Model session
+ * 
+ */
+export type session = Prisma.sessionModel
+/**
+ * Model user
+ * 
+ */
+export type user = Prisma.userModel
+/**
+ * Model verification
+ * 
+ */
+export type verification = Prisma.verificationModel

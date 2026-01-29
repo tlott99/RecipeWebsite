@@ -208,6 +208,7 @@ export type all_ingredientsWhereInput = {
   created_at?: Prisma.DateTimeNullableFilter<"all_ingredients"> | Date | string | null
   name?: Prisma.StringNullableFilter<"all_ingredients"> | string | null
   type?: Prisma.Enumingredient_typeNullableFilter<"all_ingredients"> | $Enums.ingredient_type | null
+  recipe_ingredients?: Prisma.Recipe_ingredientsListRelationFilter
 }
 
 export type all_ingredientsOrderByWithRelationInput = {
@@ -215,6 +216,7 @@ export type all_ingredientsOrderByWithRelationInput = {
   created_at?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   type?: Prisma.SortOrderInput | Prisma.SortOrder
+  recipe_ingredients?: Prisma.recipe_ingredientsOrderByRelationAggregateInput
 }
 
 export type all_ingredientsWhereUniqueInput = Prisma.AtLeast<{
@@ -225,6 +227,7 @@ export type all_ingredientsWhereUniqueInput = Prisma.AtLeast<{
   created_at?: Prisma.DateTimeNullableFilter<"all_ingredients"> | Date | string | null
   name?: Prisma.StringNullableFilter<"all_ingredients"> | string | null
   type?: Prisma.Enumingredient_typeNullableFilter<"all_ingredients"> | $Enums.ingredient_type | null
+  recipe_ingredients?: Prisma.Recipe_ingredientsListRelationFilter
 }, "id">
 
 export type all_ingredientsOrderByWithAggregationInput = {
@@ -253,6 +256,7 @@ export type all_ingredientsCreateInput = {
   created_at?: Date | string | null
   name?: string | null
   type?: $Enums.ingredient_type | null
+  recipe_ingredients?: Prisma.recipe_ingredientsCreateNestedManyWithoutAll_ingredientsInput
 }
 
 export type all_ingredientsUncheckedCreateInput = {
@@ -260,12 +264,14 @@ export type all_ingredientsUncheckedCreateInput = {
   created_at?: Date | string | null
   name?: string | null
   type?: $Enums.ingredient_type | null
+  recipe_ingredients?: Prisma.recipe_ingredientsUncheckedCreateNestedManyWithoutAll_ingredientsInput
 }
 
 export type all_ingredientsUpdateInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.NullableEnumingredient_typeFieldUpdateOperationsInput | $Enums.ingredient_type | null
+  recipe_ingredients?: Prisma.recipe_ingredientsUpdateManyWithoutAll_ingredientsNestedInput
 }
 
 export type all_ingredientsUncheckedUpdateInput = {
@@ -273,6 +279,7 @@ export type all_ingredientsUncheckedUpdateInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.NullableEnumingredient_typeFieldUpdateOperationsInput | $Enums.ingredient_type | null
+  recipe_ingredients?: Prisma.recipe_ingredientsUncheckedUpdateManyWithoutAll_ingredientsNestedInput
 }
 
 export type all_ingredientsCreateManyInput = {
@@ -324,6 +331,11 @@ export type all_ingredientsSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type All_ingredientsNullableScalarRelationFilter = {
+  is?: Prisma.all_ingredientsWhereInput | null
+  isNot?: Prisma.all_ingredientsWhereInput | null
+}
+
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
@@ -344,6 +356,93 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type all_ingredientsCreateNestedOneWithoutRecipe_ingredientsInput = {
+  create?: Prisma.XOR<Prisma.all_ingredientsCreateWithoutRecipe_ingredientsInput, Prisma.all_ingredientsUncheckedCreateWithoutRecipe_ingredientsInput>
+  connectOrCreate?: Prisma.all_ingredientsCreateOrConnectWithoutRecipe_ingredientsInput
+  connect?: Prisma.all_ingredientsWhereUniqueInput
+}
+
+export type all_ingredientsUpdateOneWithoutRecipe_ingredientsNestedInput = {
+  create?: Prisma.XOR<Prisma.all_ingredientsCreateWithoutRecipe_ingredientsInput, Prisma.all_ingredientsUncheckedCreateWithoutRecipe_ingredientsInput>
+  connectOrCreate?: Prisma.all_ingredientsCreateOrConnectWithoutRecipe_ingredientsInput
+  upsert?: Prisma.all_ingredientsUpsertWithoutRecipe_ingredientsInput
+  disconnect?: Prisma.all_ingredientsWhereInput | boolean
+  delete?: Prisma.all_ingredientsWhereInput | boolean
+  connect?: Prisma.all_ingredientsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.all_ingredientsUpdateToOneWithWhereWithoutRecipe_ingredientsInput, Prisma.all_ingredientsUpdateWithoutRecipe_ingredientsInput>, Prisma.all_ingredientsUncheckedUpdateWithoutRecipe_ingredientsInput>
+}
+
+export type all_ingredientsCreateWithoutRecipe_ingredientsInput = {
+  created_at?: Date | string | null
+  name?: string | null
+  type?: $Enums.ingredient_type | null
+}
+
+export type all_ingredientsUncheckedCreateWithoutRecipe_ingredientsInput = {
+  id?: number
+  created_at?: Date | string | null
+  name?: string | null
+  type?: $Enums.ingredient_type | null
+}
+
+export type all_ingredientsCreateOrConnectWithoutRecipe_ingredientsInput = {
+  where: Prisma.all_ingredientsWhereUniqueInput
+  create: Prisma.XOR<Prisma.all_ingredientsCreateWithoutRecipe_ingredientsInput, Prisma.all_ingredientsUncheckedCreateWithoutRecipe_ingredientsInput>
+}
+
+export type all_ingredientsUpsertWithoutRecipe_ingredientsInput = {
+  update: Prisma.XOR<Prisma.all_ingredientsUpdateWithoutRecipe_ingredientsInput, Prisma.all_ingredientsUncheckedUpdateWithoutRecipe_ingredientsInput>
+  create: Prisma.XOR<Prisma.all_ingredientsCreateWithoutRecipe_ingredientsInput, Prisma.all_ingredientsUncheckedCreateWithoutRecipe_ingredientsInput>
+  where?: Prisma.all_ingredientsWhereInput
+}
+
+export type all_ingredientsUpdateToOneWithWhereWithoutRecipe_ingredientsInput = {
+  where?: Prisma.all_ingredientsWhereInput
+  data: Prisma.XOR<Prisma.all_ingredientsUpdateWithoutRecipe_ingredientsInput, Prisma.all_ingredientsUncheckedUpdateWithoutRecipe_ingredientsInput>
+}
+
+export type all_ingredientsUpdateWithoutRecipe_ingredientsInput = {
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableEnumingredient_typeFieldUpdateOperationsInput | $Enums.ingredient_type | null
+}
+
+export type all_ingredientsUncheckedUpdateWithoutRecipe_ingredientsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableEnumingredient_typeFieldUpdateOperationsInput | $Enums.ingredient_type | null
+}
+
+
+/**
+ * Count Type All_ingredientsCountOutputType
+ */
+
+export type All_ingredientsCountOutputType = {
+  recipe_ingredients: number
+}
+
+export type All_ingredientsCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  recipe_ingredients?: boolean | All_ingredientsCountOutputTypeCountRecipe_ingredientsArgs
+}
+
+/**
+ * All_ingredientsCountOutputType without action
+ */
+export type All_ingredientsCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the All_ingredientsCountOutputType
+   */
+  select?: Prisma.All_ingredientsCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * All_ingredientsCountOutputType without action
+ */
+export type All_ingredientsCountOutputTypeCountRecipe_ingredientsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.recipe_ingredientsWhereInput
+}
 
 
 export type all_ingredientsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -351,6 +450,8 @@ export type all_ingredientsSelect<ExtArgs extends runtime.Types.Extensions.Inter
   created_at?: boolean
   name?: boolean
   type?: boolean
+  recipe_ingredients?: boolean | Prisma.all_ingredients$recipe_ingredientsArgs<ExtArgs>
+  _count?: boolean | Prisma.All_ingredientsCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["all_ingredients"]>
 
 export type all_ingredientsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -375,10 +476,18 @@ export type all_ingredientsSelectScalar = {
 }
 
 export type all_ingredientsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "name" | "type", ExtArgs["result"]["all_ingredients"]>
+export type all_ingredientsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  recipe_ingredients?: boolean | Prisma.all_ingredients$recipe_ingredientsArgs<ExtArgs>
+  _count?: boolean | Prisma.All_ingredientsCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type all_ingredientsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type all_ingredientsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $all_ingredientsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "all_ingredients"
-  objects: {}
+  objects: {
+    recipe_ingredients: Prisma.$recipe_ingredientsPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     created_at: Date | null
@@ -778,6 +887,7 @@ readonly fields: all_ingredientsFieldRefs;
  */
 export interface Prisma__all_ingredientsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  recipe_ingredients<T extends Prisma.all_ingredients$recipe_ingredientsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.all_ingredients$recipe_ingredientsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$recipe_ingredientsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -828,6 +938,10 @@ export type all_ingredientsFindUniqueArgs<ExtArgs extends runtime.Types.Extensio
    */
   omit?: Prisma.all_ingredientsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.all_ingredientsInclude<ExtArgs> | null
+  /**
    * Filter, which all_ingredients to fetch.
    */
   where: Prisma.all_ingredientsWhereUniqueInput
@@ -846,6 +960,10 @@ export type all_ingredientsFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.E
    */
   omit?: Prisma.all_ingredientsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.all_ingredientsInclude<ExtArgs> | null
+  /**
    * Filter, which all_ingredients to fetch.
    */
   where: Prisma.all_ingredientsWhereUniqueInput
@@ -863,6 +981,10 @@ export type all_ingredientsFindFirstArgs<ExtArgs extends runtime.Types.Extension
    * Omit specific fields from the all_ingredients
    */
   omit?: Prisma.all_ingredientsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.all_ingredientsInclude<ExtArgs> | null
   /**
    * Filter, which all_ingredients to fetch.
    */
@@ -912,6 +1034,10 @@ export type all_ingredientsFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Ex
    */
   omit?: Prisma.all_ingredientsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.all_ingredientsInclude<ExtArgs> | null
+  /**
    * Filter, which all_ingredients to fetch.
    */
   where?: Prisma.all_ingredientsWhereInput
@@ -960,6 +1086,10 @@ export type all_ingredientsFindManyArgs<ExtArgs extends runtime.Types.Extensions
    */
   omit?: Prisma.all_ingredientsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.all_ingredientsInclude<ExtArgs> | null
+  /**
    * Filter, which all_ingredients to fetch.
    */
   where?: Prisma.all_ingredientsWhereInput
@@ -1002,6 +1132,10 @@ export type all_ingredientsCreateArgs<ExtArgs extends runtime.Types.Extensions.I
    * Omit specific fields from the all_ingredients
    */
   omit?: Prisma.all_ingredientsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.all_ingredientsInclude<ExtArgs> | null
   /**
    * The data needed to create a all_ingredients.
    */
@@ -1050,6 +1184,10 @@ export type all_ingredientsUpdateArgs<ExtArgs extends runtime.Types.Extensions.I
    * Omit specific fields from the all_ingredients
    */
   omit?: Prisma.all_ingredientsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.all_ingredientsInclude<ExtArgs> | null
   /**
    * The data needed to update a all_ingredients.
    */
@@ -1117,6 +1255,10 @@ export type all_ingredientsUpsertArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.all_ingredientsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.all_ingredientsInclude<ExtArgs> | null
+  /**
    * The filter to search for the all_ingredients to update in case it exists.
    */
   where: Prisma.all_ingredientsWhereUniqueInput
@@ -1143,6 +1285,10 @@ export type all_ingredientsDeleteArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.all_ingredientsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.all_ingredientsInclude<ExtArgs> | null
+  /**
    * Filter which all_ingredients to delete.
    */
   where: Prisma.all_ingredientsWhereUniqueInput
@@ -1163,6 +1309,30 @@ export type all_ingredientsDeleteManyArgs<ExtArgs extends runtime.Types.Extensio
 }
 
 /**
+ * all_ingredients.recipe_ingredients
+ */
+export type all_ingredients$recipe_ingredientsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the recipe_ingredients
+   */
+  select?: Prisma.recipe_ingredientsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the recipe_ingredients
+   */
+  omit?: Prisma.recipe_ingredientsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.recipe_ingredientsInclude<ExtArgs> | null
+  where?: Prisma.recipe_ingredientsWhereInput
+  orderBy?: Prisma.recipe_ingredientsOrderByWithRelationInput | Prisma.recipe_ingredientsOrderByWithRelationInput[]
+  cursor?: Prisma.recipe_ingredientsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Recipe_ingredientsScalarFieldEnum | Prisma.Recipe_ingredientsScalarFieldEnum[]
+}
+
+/**
  * all_ingredients without action
  */
 export type all_ingredientsDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1174,4 +1344,8 @@ export type all_ingredientsDefaultArgs<ExtArgs extends runtime.Types.Extensions.
    * Omit specific fields from the all_ingredients
    */
   omit?: Prisma.all_ingredientsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.all_ingredientsInclude<ExtArgs> | null
 }

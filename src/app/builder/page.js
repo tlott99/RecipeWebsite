@@ -5,7 +5,6 @@ import Ingredients from "@/Components/RecipeBuilderPieces/Ingredients";
 import Instructions from "@/Components/RecipeBuilderPieces/Instructions";
 import MealType from "@/Components/RecipeBuilderPieces/MealType";
 import Description from "@/Components/RecipeBuilderPieces/Description";
-import SubmitButton from "@/Components/RecipeBuilderPieces/SubmitButton";
 import Title from "@/Components/RecipeBuilderPieces/Title";
 import RecipePrivacy from "@/Components/RecipeBuilderPieces/RecipePrivacy";
 import PrepTime from "@/Components/RecipeBuilderPieces/PrepTime";
@@ -75,21 +74,6 @@ export default function Builder() {
         />
       </div>
 
-      {/* Submit Section */}
-      <div className="mt-8">
-        <SubmitButton 
-          title={title}
-          mealType={returnValue} 
-          description={description} 
-          ingredients={ingredientsList} 
-          instructions={instructionsList}
-          slug={slug}
-          privacy={privacy}
-          prepTime={prepTime}
-          cookTime={cookTime}
-          servingSize={servingSize}
-        />
-      </div>
     </div>
   );
 }

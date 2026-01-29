@@ -9,10 +9,11 @@ datasource db {
 }
 
 model all_ingredients {
-  id         Int              @id @default(autoincrement())
-  created_at DateTime?        @db.Timestamp(6)
-  name       String?
-  type       ingredient_type?
+  id                 Int                  @id @default(autoincrement())
+  created_at         DateTime?            @db.Timestamp(6)
+  name               String?
+  type               ingredient_type?
+  recipe_ingredients recipe_ingredients[]
 
   @@schema("recipe_management")
 }
@@ -23,6 +24,7 @@ model instructions {
   recipe_id          Int?
   instruction_number Decimal?  @db.Decimal
   instruction_text   String?
+  recipes            recipes?  @relation(fields: [recipe_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_recipe")
 
   @@schema("recipe_management")
 }
@@ -35,18 +37,23 @@ model recipe_ingredients {
   recipe_id        Int?
   measurement_type measurement_type?
   partial_amount   fractions?
+  all_ingredients  all_ingredients?  @relation(fields: [ingredient_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_all_ing")
+  recipes          recipes?          @relation(fields: [recipe_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_recipe_ing")
 
   @@schema("recipe_management")
 }
 
 model recipes {
-  id         Int        @id @default(autoincrement())
-  created_at DateTime?  @db.Timestamp(6)
-  title      String?
-  meal_type  meal_type?
-  cook_time  cook_time?
-  prep_time  prep_time?
-  owner_id   Int?
+  id                 Int                  @id @default(autoincrement())
+  created_at         DateTime?            @db.Timestamp(6)
+  title              String?
+  meal_type          meal_type?
+  cook_time          cook_time?
+  prep_time          prep_time?
+  owner_id           Int?
+  private_recipe     Boolean?
+  instructions       instructions[]
+  recipe_ingredients recipe_ingredients[]
 
   @@schema("recipe_management")
 }

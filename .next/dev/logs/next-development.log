@@ -1,2 +1,6 @@
-[00:00:01.160] Server  LOG     ✓ Ready in 822ms
-[00:00:03.725] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.128] Server  LOG     ✓ Ready in 783ms
+[00:00:02.282] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:04.121] Browser ERROR   The `%s` prop supplied to <select> must be a scalar value if `multiple` is false.%s value 
+
+Check the render method of `MeasurementType`.
+[00:00:07.644] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

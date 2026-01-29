@@ -224,6 +224,7 @@ export type instructionsWhereInput = {
   recipe_id?: Prisma.IntNullableFilter<"instructions"> | number | null
   instruction_number?: Prisma.DecimalNullableFilter<"instructions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   instruction_text?: Prisma.StringNullableFilter<"instructions"> | string | null
+  recipes?: Prisma.XOR<Prisma.RecipesNullableScalarRelationFilter, Prisma.recipesWhereInput> | null
 }
 
 export type instructionsOrderByWithRelationInput = {
@@ -232,6 +233,7 @@ export type instructionsOrderByWithRelationInput = {
   recipe_id?: Prisma.SortOrderInput | Prisma.SortOrder
   instruction_number?: Prisma.SortOrderInput | Prisma.SortOrder
   instruction_text?: Prisma.SortOrderInput | Prisma.SortOrder
+  recipes?: Prisma.recipesOrderByWithRelationInput
 }
 
 export type instructionsWhereUniqueInput = Prisma.AtLeast<{
@@ -243,6 +245,7 @@ export type instructionsWhereUniqueInput = Prisma.AtLeast<{
   recipe_id?: Prisma.IntNullableFilter<"instructions"> | number | null
   instruction_number?: Prisma.DecimalNullableFilter<"instructions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   instruction_text?: Prisma.StringNullableFilter<"instructions"> | string | null
+  recipes?: Prisma.XOR<Prisma.RecipesNullableScalarRelationFilter, Prisma.recipesWhereInput> | null
 }, "id">
 
 export type instructionsOrderByWithAggregationInput = {
@@ -271,9 +274,9 @@ export type instructionsScalarWhereWithAggregatesInput = {
 
 export type instructionsCreateInput = {
   created_at?: Date | string | null
-  recipe_id?: number | null
   instruction_number?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   instruction_text?: string | null
+  recipes?: Prisma.recipesCreateNestedOneWithoutInstructionsInput
 }
 
 export type instructionsUncheckedCreateInput = {
@@ -286,9 +289,9 @@ export type instructionsUncheckedCreateInput = {
 
 export type instructionsUpdateInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  recipe_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   instruction_number?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   instruction_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  recipes?: Prisma.recipesUpdateOneWithoutInstructionsNestedInput
 }
 
 export type instructionsUncheckedUpdateInput = {
@@ -309,7 +312,6 @@ export type instructionsCreateManyInput = {
 
 export type instructionsUpdateManyMutationInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  recipe_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   instruction_number?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   instruction_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -358,12 +360,14 @@ export type instructionsSumOrderByAggregateInput = {
   instruction_number?: Prisma.SortOrder
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type InstructionsListRelationFilter = {
+  every?: Prisma.instructionsWhereInput
+  some?: Prisma.instructionsWhereInput
+  none?: Prisma.instructionsWhereInput
+}
+
+export type instructionsOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type NullableDecimalFieldUpdateOperationsInput = {
@@ -374,6 +378,133 @@ export type NullableDecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type instructionsCreateNestedManyWithoutRecipesInput = {
+  create?: Prisma.XOR<Prisma.instructionsCreateWithoutRecipesInput, Prisma.instructionsUncheckedCreateWithoutRecipesInput> | Prisma.instructionsCreateWithoutRecipesInput[] | Prisma.instructionsUncheckedCreateWithoutRecipesInput[]
+  connectOrCreate?: Prisma.instructionsCreateOrConnectWithoutRecipesInput | Prisma.instructionsCreateOrConnectWithoutRecipesInput[]
+  createMany?: Prisma.instructionsCreateManyRecipesInputEnvelope
+  connect?: Prisma.instructionsWhereUniqueInput | Prisma.instructionsWhereUniqueInput[]
+}
+
+export type instructionsUncheckedCreateNestedManyWithoutRecipesInput = {
+  create?: Prisma.XOR<Prisma.instructionsCreateWithoutRecipesInput, Prisma.instructionsUncheckedCreateWithoutRecipesInput> | Prisma.instructionsCreateWithoutRecipesInput[] | Prisma.instructionsUncheckedCreateWithoutRecipesInput[]
+  connectOrCreate?: Prisma.instructionsCreateOrConnectWithoutRecipesInput | Prisma.instructionsCreateOrConnectWithoutRecipesInput[]
+  createMany?: Prisma.instructionsCreateManyRecipesInputEnvelope
+  connect?: Prisma.instructionsWhereUniqueInput | Prisma.instructionsWhereUniqueInput[]
+}
+
+export type instructionsUpdateManyWithoutRecipesNestedInput = {
+  create?: Prisma.XOR<Prisma.instructionsCreateWithoutRecipesInput, Prisma.instructionsUncheckedCreateWithoutRecipesInput> | Prisma.instructionsCreateWithoutRecipesInput[] | Prisma.instructionsUncheckedCreateWithoutRecipesInput[]
+  connectOrCreate?: Prisma.instructionsCreateOrConnectWithoutRecipesInput | Prisma.instructionsCreateOrConnectWithoutRecipesInput[]
+  upsert?: Prisma.instructionsUpsertWithWhereUniqueWithoutRecipesInput | Prisma.instructionsUpsertWithWhereUniqueWithoutRecipesInput[]
+  createMany?: Prisma.instructionsCreateManyRecipesInputEnvelope
+  set?: Prisma.instructionsWhereUniqueInput | Prisma.instructionsWhereUniqueInput[]
+  disconnect?: Prisma.instructionsWhereUniqueInput | Prisma.instructionsWhereUniqueInput[]
+  delete?: Prisma.instructionsWhereUniqueInput | Prisma.instructionsWhereUniqueInput[]
+  connect?: Prisma.instructionsWhereUniqueInput | Prisma.instructionsWhereUniqueInput[]
+  update?: Prisma.instructionsUpdateWithWhereUniqueWithoutRecipesInput | Prisma.instructionsUpdateWithWhereUniqueWithoutRecipesInput[]
+  updateMany?: Prisma.instructionsUpdateManyWithWhereWithoutRecipesInput | Prisma.instructionsUpdateManyWithWhereWithoutRecipesInput[]
+  deleteMany?: Prisma.instructionsScalarWhereInput | Prisma.instructionsScalarWhereInput[]
+}
+
+export type instructionsUncheckedUpdateManyWithoutRecipesNestedInput = {
+  create?: Prisma.XOR<Prisma.instructionsCreateWithoutRecipesInput, Prisma.instructionsUncheckedCreateWithoutRecipesInput> | Prisma.instructionsCreateWithoutRecipesInput[] | Prisma.instructionsUncheckedCreateWithoutRecipesInput[]
+  connectOrCreate?: Prisma.instructionsCreateOrConnectWithoutRecipesInput | Prisma.instructionsCreateOrConnectWithoutRecipesInput[]
+  upsert?: Prisma.instructionsUpsertWithWhereUniqueWithoutRecipesInput | Prisma.instructionsUpsertWithWhereUniqueWithoutRecipesInput[]
+  createMany?: Prisma.instructionsCreateManyRecipesInputEnvelope
+  set?: Prisma.instructionsWhereUniqueInput | Prisma.instructionsWhereUniqueInput[]
+  disconnect?: Prisma.instructionsWhereUniqueInput | Prisma.instructionsWhereUniqueInput[]
+  delete?: Prisma.instructionsWhereUniqueInput | Prisma.instructionsWhereUniqueInput[]
+  connect?: Prisma.instructionsWhereUniqueInput | Prisma.instructionsWhereUniqueInput[]
+  update?: Prisma.instructionsUpdateWithWhereUniqueWithoutRecipesInput | Prisma.instructionsUpdateWithWhereUniqueWithoutRecipesInput[]
+  updateMany?: Prisma.instructionsUpdateManyWithWhereWithoutRecipesInput | Prisma.instructionsUpdateManyWithWhereWithoutRecipesInput[]
+  deleteMany?: Prisma.instructionsScalarWhereInput | Prisma.instructionsScalarWhereInput[]
+}
+
+export type instructionsCreateWithoutRecipesInput = {
+  created_at?: Date | string | null
+  instruction_number?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  instruction_text?: string | null
+}
+
+export type instructionsUncheckedCreateWithoutRecipesInput = {
+  id?: number
+  created_at?: Date | string | null
+  instruction_number?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  instruction_text?: string | null
+}
+
+export type instructionsCreateOrConnectWithoutRecipesInput = {
+  where: Prisma.instructionsWhereUniqueInput
+  create: Prisma.XOR<Prisma.instructionsCreateWithoutRecipesInput, Prisma.instructionsUncheckedCreateWithoutRecipesInput>
+}
+
+export type instructionsCreateManyRecipesInputEnvelope = {
+  data: Prisma.instructionsCreateManyRecipesInput | Prisma.instructionsCreateManyRecipesInput[]
+  skipDuplicates?: boolean
+}
+
+export type instructionsUpsertWithWhereUniqueWithoutRecipesInput = {
+  where: Prisma.instructionsWhereUniqueInput
+  update: Prisma.XOR<Prisma.instructionsUpdateWithoutRecipesInput, Prisma.instructionsUncheckedUpdateWithoutRecipesInput>
+  create: Prisma.XOR<Prisma.instructionsCreateWithoutRecipesInput, Prisma.instructionsUncheckedCreateWithoutRecipesInput>
+}
+
+export type instructionsUpdateWithWhereUniqueWithoutRecipesInput = {
+  where: Prisma.instructionsWhereUniqueInput
+  data: Prisma.XOR<Prisma.instructionsUpdateWithoutRecipesInput, Prisma.instructionsUncheckedUpdateWithoutRecipesInput>
+}
+
+export type instructionsUpdateManyWithWhereWithoutRecipesInput = {
+  where: Prisma.instructionsScalarWhereInput
+  data: Prisma.XOR<Prisma.instructionsUpdateManyMutationInput, Prisma.instructionsUncheckedUpdateManyWithoutRecipesInput>
+}
+
+export type instructionsScalarWhereInput = {
+  AND?: Prisma.instructionsScalarWhereInput | Prisma.instructionsScalarWhereInput[]
+  OR?: Prisma.instructionsScalarWhereInput[]
+  NOT?: Prisma.instructionsScalarWhereInput | Prisma.instructionsScalarWhereInput[]
+  id?: Prisma.IntFilter<"instructions"> | number
+  created_at?: Prisma.DateTimeNullableFilter<"instructions"> | Date | string | null
+  recipe_id?: Prisma.IntNullableFilter<"instructions"> | number | null
+  instruction_number?: Prisma.DecimalNullableFilter<"instructions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  instruction_text?: Prisma.StringNullableFilter<"instructions"> | string | null
+}
+
+export type instructionsCreateManyRecipesInput = {
+  id?: number
+  created_at?: Date | string | null
+  instruction_number?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  instruction_text?: string | null
+}
+
+export type instructionsUpdateWithoutRecipesInput = {
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  instruction_number?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  instruction_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type instructionsUncheckedUpdateWithoutRecipesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  instruction_number?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  instruction_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type instructionsUncheckedUpdateManyWithoutRecipesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  instruction_number?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  instruction_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
 
 
 export type instructionsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -382,6 +513,7 @@ export type instructionsSelect<ExtArgs extends runtime.Types.Extensions.Internal
   recipe_id?: boolean
   instruction_number?: boolean
   instruction_text?: boolean
+  recipes?: boolean | Prisma.instructions$recipesArgs<ExtArgs>
 }, ExtArgs["result"]["instructions"]>
 
 export type instructionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -390,6 +522,7 @@ export type instructionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   recipe_id?: boolean
   instruction_number?: boolean
   instruction_text?: boolean
+  recipes?: boolean | Prisma.instructions$recipesArgs<ExtArgs>
 }, ExtArgs["result"]["instructions"]>
 
 export type instructionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -398,6 +531,7 @@ export type instructionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   recipe_id?: boolean
   instruction_number?: boolean
   instruction_text?: boolean
+  recipes?: boolean | Prisma.instructions$recipesArgs<ExtArgs>
 }, ExtArgs["result"]["instructions"]>
 
 export type instructionsSelectScalar = {
@@ -409,10 +543,21 @@ export type instructionsSelectScalar = {
 }
 
 export type instructionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "recipe_id" | "instruction_number" | "instruction_text", ExtArgs["result"]["instructions"]>
+export type instructionsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  recipes?: boolean | Prisma.instructions$recipesArgs<ExtArgs>
+}
+export type instructionsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  recipes?: boolean | Prisma.instructions$recipesArgs<ExtArgs>
+}
+export type instructionsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  recipes?: boolean | Prisma.instructions$recipesArgs<ExtArgs>
+}
 
 export type $instructionsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "instructions"
-  objects: {}
+  objects: {
+    recipes: Prisma.$recipesPayload<ExtArgs> | null
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     created_at: Date | null
@@ -813,6 +958,7 @@ readonly fields: instructionsFieldRefs;
  */
 export interface Prisma__instructionsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  recipes<T extends Prisma.instructions$recipesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.instructions$recipesArgs<ExtArgs>>): Prisma.Prisma__recipesClient<runtime.Types.Result.GetResult<Prisma.$recipesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -864,6 +1010,10 @@ export type instructionsFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.instructionsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsInclude<ExtArgs> | null
+  /**
    * Filter, which instructions to fetch.
    */
   where: Prisma.instructionsWhereUniqueInput
@@ -882,6 +1032,10 @@ export type instructionsFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Exte
    */
   omit?: Prisma.instructionsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsInclude<ExtArgs> | null
+  /**
    * Filter, which instructions to fetch.
    */
   where: Prisma.instructionsWhereUniqueInput
@@ -899,6 +1053,10 @@ export type instructionsFindFirstArgs<ExtArgs extends runtime.Types.Extensions.I
    * Omit specific fields from the instructions
    */
   omit?: Prisma.instructionsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsInclude<ExtArgs> | null
   /**
    * Filter, which instructions to fetch.
    */
@@ -948,6 +1106,10 @@ export type instructionsFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Exten
    */
   omit?: Prisma.instructionsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsInclude<ExtArgs> | null
+  /**
    * Filter, which instructions to fetch.
    */
   where?: Prisma.instructionsWhereInput
@@ -996,6 +1158,10 @@ export type instructionsFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.instructionsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsInclude<ExtArgs> | null
+  /**
    * Filter, which instructions to fetch.
    */
   where?: Prisma.instructionsWhereInput
@@ -1039,6 +1205,10 @@ export type instructionsCreateArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   omit?: Prisma.instructionsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsInclude<ExtArgs> | null
+  /**
    * The data needed to create a instructions.
    */
   data?: Prisma.XOR<Prisma.instructionsCreateInput, Prisma.instructionsUncheckedCreateInput>
@@ -1072,6 +1242,10 @@ export type instructionsCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    */
   data: Prisma.instructionsCreateManyInput | Prisma.instructionsCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1086,6 +1260,10 @@ export type instructionsUpdateArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the instructions
    */
   omit?: Prisma.instructionsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsInclude<ExtArgs> | null
   /**
    * The data needed to update a instructions.
    */
@@ -1138,6 +1316,10 @@ export type instructionsUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    * Limit how many instructions to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1152,6 +1334,10 @@ export type instructionsUpsertArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the instructions
    */
   omit?: Prisma.instructionsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsInclude<ExtArgs> | null
   /**
    * The filter to search for the instructions to update in case it exists.
    */
@@ -1179,6 +1365,10 @@ export type instructionsDeleteArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   omit?: Prisma.instructionsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsInclude<ExtArgs> | null
+  /**
    * Filter which instructions to delete.
    */
   where: Prisma.instructionsWhereUniqueInput
@@ -1199,6 +1389,25 @@ export type instructionsDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.
 }
 
 /**
+ * instructions.recipes
+ */
+export type instructions$recipesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the recipes
+   */
+  select?: Prisma.recipesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the recipes
+   */
+  omit?: Prisma.recipesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.recipesInclude<ExtArgs> | null
+  where?: Prisma.recipesWhereInput
+}
+
+/**
  * instructions without action
  */
 export type instructionsDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1210,4 +1419,8 @@ export type instructionsDefaultArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Omit specific fields from the instructions
    */
   omit?: Prisma.instructionsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.instructionsInclude<ExtArgs> | null
 }

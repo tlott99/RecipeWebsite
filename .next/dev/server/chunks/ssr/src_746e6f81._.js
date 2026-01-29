@@ -720,36 +720,10 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
-(()=>{
-    const e = new Error("Cannot find module '@apollo/client'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
-(()=>{
-    const e = new Error("Cannot find module '../../graphQLQuery'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
 "use client";
 ;
 ;
-;
-;
 function SubmitButton({ title, mealType, description, ingredients, instructions, slug, privacy, cookTime, prepTime, servingSize }) {
-    const [addRecipes, { loading, error }] = useMutation(CREATE_MUTATION);
-    const [publishRecipe] = useMutation(PUBLISH_MUTATION);
-    // Error handling
-    if (error) {
-        console.error("Mutation Error:", error);
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-            className: "text-red-500 mt-4",
-            children: "Error saving recipe. Please try again."
-        }, void 0, false, {
-            fileName: "[project]/src/Components/RecipeBuilderPieces/SubmitButton.jsx",
-            lineNumber: 25,
-            columnNumber: 12
-        }, this);
-    }
     const newTitle = title;
     const newMealType = JSON.stringify(mealType);
     const newIngredients = JSON.stringify(ingredients);
@@ -809,7 +783,7 @@ function SubmitButton({ title, mealType, description, ingredients, instructions,
                                 strokeWidth: "4"
                             }, void 0, false, {
                                 fileName: "[project]/src/Components/RecipeBuilderPieces/SubmitButton.jsx",
-                                lineNumber: 82,
+                                lineNumber: 72,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -818,30 +792,30 @@ function SubmitButton({ title, mealType, description, ingredients, instructions,
                                 d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                             }, void 0, false, {
                                 fileName: "[project]/src/Components/RecipeBuilderPieces/SubmitButton.jsx",
-                                lineNumber: 83,
+                                lineNumber: 73,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/Components/RecipeBuilderPieces/SubmitButton.jsx",
-                        lineNumber: 81,
+                        lineNumber: 71,
                         columnNumber: 13
                     }, this),
                     "Saving..."
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/Components/RecipeBuilderPieces/SubmitButton.jsx",
-                lineNumber: 80,
+                lineNumber: 70,
                 columnNumber: 11
             }, this) : "Submit Recipe"
         }, void 0, false, {
             fileName: "[project]/src/Components/RecipeBuilderPieces/SubmitButton.jsx",
-            lineNumber: 70,
+            lineNumber: 60,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/Components/RecipeBuilderPieces/SubmitButton.jsx",
-        lineNumber: 69,
+        lineNumber: 59,
         columnNumber: 5
     }, this);
 }
