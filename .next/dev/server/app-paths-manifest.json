@@ -1,6 +1,0 @@
-{
-  "/builder/page": "app/builder/page.js",
-  "/display-recipe/[id]/page": "app/display-recipe/[id]/page.js",
-  "/finder/page": "app/finder/page.js",
-  "/page": "app/page.js"
-}

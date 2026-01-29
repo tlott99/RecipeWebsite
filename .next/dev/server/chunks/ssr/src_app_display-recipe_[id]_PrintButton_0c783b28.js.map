@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Git/Senior%20Project/RecipeWebsite/src/app/display-recipe/%5Bid%5D/PrintButton.js"],"sourcesContent":["// app/RecipeDisplay/[slug]/PrintButton.js\r\n\"use client\";\r\n\r\nexport default function PrintButton({ slug }) {\r\n  return (\r\n    <button \r\n      className=\"bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-200\" \r\n      onClick={() => window.open(`/print/${slug}`)}\r\n    >\r\n      Print Recipe\r\n    </button>\r\n  );\r\n}"],"names":[],"mappings":";;;;;AAAA,0CAA0C;AAC1C;;AAEe,SAAS,YAAY,EAAE,IAAI,EAAE;IAC1C,qBACE,8OAAC;QACC,WAAU;QACV,SAAS,IAAM,OAAO,IAAI,CAAC,CAAC,OAAO,EAAE,MAAM;kBAC5C;;;;;;AAIL"}}]
-}

@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///C:/Git/Senior%20Project/RecipeWebsite/src/app/testroute/%5BrecipeId%5D/page.js"],"sourcesContent":["export default async function Page({ params }) {\r\n  const { recipeId } = await params;\r\n  console.log(\"RECIPE ID CAPTURED:\", recipeId);\r\n  return <div>ID is: {recipeId}</div>\r\n}"],"names":[],"mappings":";;;;;;AAAe,eAAe,KAAK,EAAE,MAAM,EAAE;IAC3C,MAAM,EAAE,QAAQ,EAAE,GAAG,MAAM;IAC3B,QAAQ,GAAG,CAAC,uBAAuB;IACnC,qBAAO,8OAAC;;YAAI;YAAQ;;;;;;;AACtB"}}]
-}
