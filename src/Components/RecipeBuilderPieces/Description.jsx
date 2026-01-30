@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 export default function Description({ description, setDescription }) {
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);

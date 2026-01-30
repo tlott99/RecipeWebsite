@@ -526,10 +526,6 @@ export type userUpdateOneRequiredWithoutSessionNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutSessionInput, Prisma.userUpdateWithoutSessionInput>, Prisma.userUncheckedUpdateWithoutSessionInput>
 }
 
-export type NullableBoolFieldUpdateOperationsInput = {
-  set?: boolean | null
-}
-
 export type userCreateWithoutAccountInput = {
   id?: string
   name: string

@@ -1,19 +1,18 @@
 "use client";
 
-import { React, useState } from "react";
+import { useState } from "react";
 
 export default function Instructions({ instructionsList, setInstructionsList }) {
   const [newInstruction, setNewInstruction] = useState('');
   
-  const handleInstructionAdd = (event) => {
-    event.preventDefault();
-    if (!newInstruction.trim()) return; // Prevent adding empty instructions
+const handleInstructionAdd = () => {
+    if (!newInstruction.trim()) return; 
 
     const thisInstruction = {
       instruction: newInstruction
     };
     setInstructionsList([...instructionsList, thisInstruction]);
-    setNewInstruction(''); // Clear the input after adding
+    setNewInstruction(''); 
   };
 
   const handleInstructionRemove = (index) => {
@@ -27,7 +26,7 @@ export default function Instructions({ instructionsList, setInstructionsList }) 
   };
 
   return (
-    <form className="mt-6" onSubmit={handleInstructionAdd}>
+    <div className="mt-6" onSubmit={handleInstructionAdd}>
       <h3 className="text-xl font-semibold text-gray-800">Add a New Instruction</h3>
       
       <div className="flex flex-col md:flex-row items-start gap-4 mt-4 ml-6">
@@ -38,9 +37,8 @@ export default function Instructions({ instructionsList, setInstructionsList }) 
           <textarea
             name="instruction"
             id="instruction"
-            required
             value={newInstruction}
-            onChange={handleInstructionChange}
+            onChange={(e) => setNewInstruction(e.target.value)}
             rows={3}
             className="block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm 
                        focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 
@@ -50,7 +48,8 @@ export default function Instructions({ instructionsList, setInstructionsList }) 
         </div>
 
         <button 
-          type="submit" 
+          type="button" 
+          onClick={handleInstructionAdd}
           className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-md text-sm font-medium transition-colors mt-6"
         >
           Add an Instruction
@@ -77,6 +76,6 @@ export default function Instructions({ instructionsList, setInstructionsList }) 
           ))} 
         </ol>
       </div>
-    </form>
+    </div>
   );
 }

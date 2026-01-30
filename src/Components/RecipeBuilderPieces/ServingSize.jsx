@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from 'react';
-
 export default function ServingSize({ servingSize, setServingSize }) {
   const handleChange = (event) => {
     setServingSize(event.target.value);

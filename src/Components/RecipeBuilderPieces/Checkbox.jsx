@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function NewCheckbox({ x, returnValue, setReturnValue }) {
   const [checked, setChecked] = useState(false);

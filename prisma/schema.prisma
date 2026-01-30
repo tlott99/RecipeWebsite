@@ -52,6 +52,7 @@ model recipes {
   prep_time          prep_time?
   owner_id           Int?
   private_recipe     Boolean?
+  slug               String?
   instructions       instructions[]
   recipe_ingredients recipe_ingredients[]
 

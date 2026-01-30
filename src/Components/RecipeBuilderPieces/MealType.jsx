@@ -1,5 +1,4 @@
 import NewCheckbox from "./Checkbox";
-import React from 'react';
 
 export default function MealType({ returnValue, setReturnValue }) {
   return (

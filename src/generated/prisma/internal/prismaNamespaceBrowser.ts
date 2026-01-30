@@ -123,7 +123,9 @@ export const RecipesScalarFieldEnum = {
   meal_type: 'meal_type',
   cook_time: 'cook_time',
   prep_time: 'prep_time',
-  owner_id: 'owner_id'
+  owner_id: 'owner_id',
+  private_recipe: 'private_recipe',
+  slug: 'slug'
 } as const
 
 export type RecipesScalarFieldEnum = (typeof RecipesScalarFieldEnum)[keyof typeof RecipesScalarFieldEnum]

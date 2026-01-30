@@ -1,10 +1,10 @@
 "use client";
 
-import { React, useState } from "react";
+import { useState } from "react";
 import MeasurementType from "./MeasurementType";
 
 export default function Ingredients({ ingredientsList, setIngredientsList }) {
-  const [measurement, setMeasurement] = useState(['']);
+  const [measurement, setMeasurement] = useState('');
   const [amount, setAmount] = useState(['']);
   const [newIngredient, setNewIngredient] = useState('');
 
@@ -44,7 +44,6 @@ export default function Ingredients({ ingredientsList, setIngredientsList }) {
           <input
             name="amount"
             type="text"
-            required
             onChange={handleAmountChange}
             className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
             placeholder="e.g. 1/2"
@@ -62,7 +61,6 @@ export default function Ingredients({ ingredientsList, setIngredientsList }) {
             name="ingredient"
             type="text"
             id="ingredient"
-            required
             onChange={handleIngredientChange}
             className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
             placeholder="e.g. Flour"

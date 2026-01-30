@@ -1,7 +1,5 @@
 "use client";
 
-import React from 'react';
-
 export default function Title({ title, setTitle, slug, setSlug }) {
   const handleTitleChange = (event) => {
     setTitle(event.target.value);

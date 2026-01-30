@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from 'react';
-
 export default function PrepTime({ prepTime, setPrepTime }) {
   const handleChange = (event) => {
     setPrepTime(event.target.value);
@@ -28,12 +26,12 @@ export default function PrepTime({ prepTime, setPrepTime }) {
                      sm:text-sm cursor-pointer"
         >
           <option value="" disabled>Select time</option>
-          <option value={10}>10 Minutes</option>
-          <option value={20}>20 Minutes</option>
-          <option value={30}>30 Minutes</option>
-          <option value={40}>40 Minutes</option>
-          <option value={50}>50 Minutes</option>
-          <option value={60}>60 Minutes</option>
+          <option value={"MIN_10"}>10 Minutes</option>
+          <option value={"MIN_20"}>20 Minutes</option>
+          <option value={"MIN_30"}>30 Minutes</option>
+          <option value={"MIN_40"}>40 Minutes</option>
+          <option value={"MIN_50"}>50 Minutes</option>
+          <option value={"MIN_60"}>60 Minutes</option>
         </select>
       </div>
     </div>
