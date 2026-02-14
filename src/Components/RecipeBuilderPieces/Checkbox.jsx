@@ -1,21 +1,21 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function NewCheckbox({ x, returnValue, setReturnValue }) {
-  const [checked, setChecked] = useState(false);
-  const label = x;
+// Change 'returnValue' and 'setReturnValue' to 'mealType' and 'setMealType'
+export default function NewCheckbox({ x, mealType, setMealType }) {
+  // Check if this specific box is the one currently selected in the parent state
+  const isChecked = mealType?.checkedMeal === x;
 
   const handleCheckedChange = (event) => {
-    const isChecked = event.target.checked;
-    setChecked(isChecked);
+    const checkedStatus = event.target.checked;
     
-    // Logic updated to use the immediate value to avoid state-stale issues
-    const thisMeal = {
-      checked: isChecked,
-      checkedMeal: x
-    };
-    setReturnValue(thisMeal);
+    // If checked, send the meal type. If unchecked, send an empty object or null.
+    const thisMeal = checkedStatus 
+      ? { checked: true, checkedMeal: x }
+      : { checked: false, checkedMeal: "" };
+
+    setMealType(thisMeal);
   };
 
   return (
@@ -23,13 +23,12 @@ export default function NewCheckbox({ x, returnValue, setReturnValue }) {
       <label className="flex items-center cursor-pointer text-sm text-gray-700">
         <input
           type="checkbox"
-          checked={checked}
+          // This ensures the UI reflects the actual parent state
+          checked={isChecked} 
           onChange={handleCheckedChange}
           className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
         />
-        <span className="ml-2">
-          {label}
-        </span>
+        <span className="ml-2">{x}</span>
       </label>
     </div>
   );

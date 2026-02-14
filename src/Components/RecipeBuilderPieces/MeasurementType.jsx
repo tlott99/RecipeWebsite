@@ -6,7 +6,7 @@ export default function MeasurementType({ measurement, setMeasurement }) {
   };
 
   return (
-    <div className="min-w-[120px]">
+    <div className="min-w-[100px]">
       <div className="flex flex-col space-y-1">
         {/* Label */}
         <label 
@@ -26,15 +26,17 @@ export default function MeasurementType({ measurement, setMeasurement }) {
                      focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 
                      sm:text-sm cursor-pointer"
         >
-          <option value="c.">Cups</option>
-          <option value="tsp.">Teaspoons</option>
-          <option value="tbsp.">Tablespoons</option>
-          <option value="fl.oz.">Fluid Ounces</option>
-          <option value="oz.">Ounces</option>
-          <option value="lbs.">Pounds</option>
-          <option value="">/None/</option>
-          <option value="g.">Grams</option>
-          <option value="kg.">Kilograms</option>
+          <option value="">Select...</option>
+          <option value="Cups">Cups</option>
+          <option value="Teaspoons">Teaspoons</option>
+          <option value="Tablespoons">Tablespoons</option>
+          <option value="Fluid">Fluid Ounces</option>
+          <option value="Ounces">Ounces</option>
+          <option value="Pounds">Pounds</option>
+          <option value="None_">/None/</option>
+          <option value="Grams">Grams</option>
+          <option value="Kilograms">Kilograms</option>
+          <option value="Milliliters">Milliliters</option>
         </select>
       </div>
     </div>

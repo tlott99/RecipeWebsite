@@ -5,7 +5,7 @@ import RecipeFinderClient from "./RecipeFinderClient";
 export default async function RecipeFinderPage() {
   // 1. Fetch random recipes
   const rawRecipes = await prisma.$queryRaw`
-    SELECT * FROM "recipe_management"."recipes" ORDER BY RANDOM() LIMIT 15
+    SELECT * FROM "recipe_management"."recipes" WHERE private_recipe <> true ORDER BY RANDOM() LIMIT 15 
   `;
 
   // 2. IMPORTANT: Serialize the data

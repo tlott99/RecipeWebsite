@@ -46,6 +46,7 @@ export type RecipesMinAggregateOutputType = {
   owner_id: number | null
   private_recipe: boolean | null
   slug: string | null
+  description: string | null
 }
 
 export type RecipesMaxAggregateOutputType = {
@@ -58,6 +59,7 @@ export type RecipesMaxAggregateOutputType = {
   owner_id: number | null
   private_recipe: boolean | null
   slug: string | null
+  description: string | null
 }
 
 export type RecipesCountAggregateOutputType = {
@@ -70,6 +72,7 @@ export type RecipesCountAggregateOutputType = {
   owner_id: number
   private_recipe: number
   slug: number
+  description: number
   _all: number
 }
 
@@ -94,6 +97,7 @@ export type RecipesMinAggregateInputType = {
   owner_id?: true
   private_recipe?: true
   slug?: true
+  description?: true
 }
 
 export type RecipesMaxAggregateInputType = {
@@ -106,6 +110,7 @@ export type RecipesMaxAggregateInputType = {
   owner_id?: true
   private_recipe?: true
   slug?: true
+  description?: true
 }
 
 export type RecipesCountAggregateInputType = {
@@ -118,6 +123,7 @@ export type RecipesCountAggregateInputType = {
   owner_id?: true
   private_recipe?: true
   slug?: true
+  description?: true
   _all?: true
 }
 
@@ -217,6 +223,7 @@ export type RecipesGroupByOutputType = {
   owner_id: number | null
   private_recipe: boolean | null
   slug: string | null
+  description: string | null
   _count: RecipesCountAggregateOutputType | null
   _avg: RecipesAvgAggregateOutputType | null
   _sum: RecipesSumAggregateOutputType | null
@@ -252,6 +259,7 @@ export type recipesWhereInput = {
   owner_id?: Prisma.IntNullableFilter<"recipes"> | number | null
   private_recipe?: Prisma.BoolNullableFilter<"recipes"> | boolean | null
   slug?: Prisma.StringNullableFilter<"recipes"> | string | null
+  description?: Prisma.StringNullableFilter<"recipes"> | string | null
   instructions?: Prisma.InstructionsListRelationFilter
   recipe_ingredients?: Prisma.Recipe_ingredientsListRelationFilter
 }
@@ -266,6 +274,7 @@ export type recipesOrderByWithRelationInput = {
   owner_id?: Prisma.SortOrderInput | Prisma.SortOrder
   private_recipe?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   instructions?: Prisma.instructionsOrderByRelationAggregateInput
   recipe_ingredients?: Prisma.recipe_ingredientsOrderByRelationAggregateInput
 }
@@ -283,6 +292,7 @@ export type recipesWhereUniqueInput = Prisma.AtLeast<{
   owner_id?: Prisma.IntNullableFilter<"recipes"> | number | null
   private_recipe?: Prisma.BoolNullableFilter<"recipes"> | boolean | null
   slug?: Prisma.StringNullableFilter<"recipes"> | string | null
+  description?: Prisma.StringNullableFilter<"recipes"> | string | null
   instructions?: Prisma.InstructionsListRelationFilter
   recipe_ingredients?: Prisma.Recipe_ingredientsListRelationFilter
 }, "id">
@@ -297,6 +307,7 @@ export type recipesOrderByWithAggregationInput = {
   owner_id?: Prisma.SortOrderInput | Prisma.SortOrder
   private_recipe?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.recipesCountOrderByAggregateInput
   _avg?: Prisma.recipesAvgOrderByAggregateInput
   _max?: Prisma.recipesMaxOrderByAggregateInput
@@ -317,6 +328,7 @@ export type recipesScalarWhereWithAggregatesInput = {
   owner_id?: Prisma.IntNullableWithAggregatesFilter<"recipes"> | number | null
   private_recipe?: Prisma.BoolNullableWithAggregatesFilter<"recipes"> | boolean | null
   slug?: Prisma.StringNullableWithAggregatesFilter<"recipes"> | string | null
+  description?: Prisma.StringNullableWithAggregatesFilter<"recipes"> | string | null
 }
 
 export type recipesCreateInput = {
@@ -328,6 +340,7 @@ export type recipesCreateInput = {
   owner_id?: number | null
   private_recipe?: boolean | null
   slug?: string | null
+  description?: string | null
   instructions?: Prisma.instructionsCreateNestedManyWithoutRecipesInput
   recipe_ingredients?: Prisma.recipe_ingredientsCreateNestedManyWithoutRecipesInput
 }
@@ -342,6 +355,7 @@ export type recipesUncheckedCreateInput = {
   owner_id?: number | null
   private_recipe?: boolean | null
   slug?: string | null
+  description?: string | null
   instructions?: Prisma.instructionsUncheckedCreateNestedManyWithoutRecipesInput
   recipe_ingredients?: Prisma.recipe_ingredientsUncheckedCreateNestedManyWithoutRecipesInput
 }
@@ -355,6 +369,7 @@ export type recipesUpdateInput = {
   owner_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   private_recipe?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instructions?: Prisma.instructionsUpdateManyWithoutRecipesNestedInput
   recipe_ingredients?: Prisma.recipe_ingredientsUpdateManyWithoutRecipesNestedInput
 }
@@ -369,6 +384,7 @@ export type recipesUncheckedUpdateInput = {
   owner_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   private_recipe?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instructions?: Prisma.instructionsUncheckedUpdateManyWithoutRecipesNestedInput
   recipe_ingredients?: Prisma.recipe_ingredientsUncheckedUpdateManyWithoutRecipesNestedInput
 }
@@ -383,6 +399,7 @@ export type recipesCreateManyInput = {
   owner_id?: number | null
   private_recipe?: boolean | null
   slug?: string | null
+  description?: string | null
 }
 
 export type recipesUpdateManyMutationInput = {
@@ -394,6 +411,7 @@ export type recipesUpdateManyMutationInput = {
   owner_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   private_recipe?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type recipesUncheckedUpdateManyInput = {
@@ -406,6 +424,7 @@ export type recipesUncheckedUpdateManyInput = {
   owner_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   private_recipe?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type RecipesNullableScalarRelationFilter = {
@@ -423,6 +442,7 @@ export type recipesCountOrderByAggregateInput = {
   owner_id?: Prisma.SortOrder
   private_recipe?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  description?: Prisma.SortOrder
 }
 
 export type recipesAvgOrderByAggregateInput = {
@@ -440,6 +460,7 @@ export type recipesMaxOrderByAggregateInput = {
   owner_id?: Prisma.SortOrder
   private_recipe?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  description?: Prisma.SortOrder
 }
 
 export type recipesMinOrderByAggregateInput = {
@@ -452,6 +473,7 @@ export type recipesMinOrderByAggregateInput = {
   owner_id?: Prisma.SortOrder
   private_recipe?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  description?: Prisma.SortOrder
 }
 
 export type recipesSumOrderByAggregateInput = {
@@ -516,6 +538,7 @@ export type recipesCreateWithoutInstructionsInput = {
   owner_id?: number | null
   private_recipe?: boolean | null
   slug?: string | null
+  description?: string | null
   recipe_ingredients?: Prisma.recipe_ingredientsCreateNestedManyWithoutRecipesInput
 }
 
@@ -529,6 +552,7 @@ export type recipesUncheckedCreateWithoutInstructionsInput = {
   owner_id?: number | null
   private_recipe?: boolean | null
   slug?: string | null
+  description?: string | null
   recipe_ingredients?: Prisma.recipe_ingredientsUncheckedCreateNestedManyWithoutRecipesInput
 }
 
@@ -557,6 +581,7 @@ export type recipesUpdateWithoutInstructionsInput = {
   owner_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   private_recipe?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipe_ingredients?: Prisma.recipe_ingredientsUpdateManyWithoutRecipesNestedInput
 }
 
@@ -570,6 +595,7 @@ export type recipesUncheckedUpdateWithoutInstructionsInput = {
   owner_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   private_recipe?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipe_ingredients?: Prisma.recipe_ingredientsUncheckedUpdateManyWithoutRecipesNestedInput
 }
 
@@ -582,6 +608,7 @@ export type recipesCreateWithoutRecipe_ingredientsInput = {
   owner_id?: number | null
   private_recipe?: boolean | null
   slug?: string | null
+  description?: string | null
   instructions?: Prisma.instructionsCreateNestedManyWithoutRecipesInput
 }
 
@@ -595,6 +622,7 @@ export type recipesUncheckedCreateWithoutRecipe_ingredientsInput = {
   owner_id?: number | null
   private_recipe?: boolean | null
   slug?: string | null
+  description?: string | null
   instructions?: Prisma.instructionsUncheckedCreateNestedManyWithoutRecipesInput
 }
 
@@ -623,6 +651,7 @@ export type recipesUpdateWithoutRecipe_ingredientsInput = {
   owner_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   private_recipe?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instructions?: Prisma.instructionsUpdateManyWithoutRecipesNestedInput
 }
 
@@ -636,6 +665,7 @@ export type recipesUncheckedUpdateWithoutRecipe_ingredientsInput = {
   owner_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   private_recipe?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instructions?: Prisma.instructionsUncheckedUpdateManyWithoutRecipesNestedInput
 }
 
@@ -689,6 +719,7 @@ export type recipesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   owner_id?: boolean
   private_recipe?: boolean
   slug?: boolean
+  description?: boolean
   instructions?: boolean | Prisma.recipes$instructionsArgs<ExtArgs>
   recipe_ingredients?: boolean | Prisma.recipes$recipe_ingredientsArgs<ExtArgs>
   _count?: boolean | Prisma.RecipesCountOutputTypeDefaultArgs<ExtArgs>
@@ -704,6 +735,7 @@ export type recipesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   owner_id?: boolean
   private_recipe?: boolean
   slug?: boolean
+  description?: boolean
 }, ExtArgs["result"]["recipes"]>
 
 export type recipesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -716,6 +748,7 @@ export type recipesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   owner_id?: boolean
   private_recipe?: boolean
   slug?: boolean
+  description?: boolean
 }, ExtArgs["result"]["recipes"]>
 
 export type recipesSelectScalar = {
@@ -728,9 +761,10 @@ export type recipesSelectScalar = {
   owner_id?: boolean
   private_recipe?: boolean
   slug?: boolean
+  description?: boolean
 }
 
-export type recipesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "title" | "meal_type" | "cook_time" | "prep_time" | "owner_id" | "private_recipe" | "slug", ExtArgs["result"]["recipes"]>
+export type recipesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "created_at" | "title" | "meal_type" | "cook_time" | "prep_time" | "owner_id" | "private_recipe" | "slug" | "description", ExtArgs["result"]["recipes"]>
 export type recipesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   instructions?: boolean | Prisma.recipes$instructionsArgs<ExtArgs>
   recipe_ingredients?: boolean | Prisma.recipes$recipe_ingredientsArgs<ExtArgs>
@@ -755,6 +789,7 @@ export type $recipesPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     owner_id: number | null
     private_recipe: boolean | null
     slug: string | null
+    description: string | null
   }, ExtArgs["result"]["recipes"]>
   composites: {}
 }
@@ -1189,6 +1224,7 @@ export interface recipesFieldRefs {
   readonly owner_id: Prisma.FieldRef<"recipes", 'Int'>
   readonly private_recipe: Prisma.FieldRef<"recipes", 'Boolean'>
   readonly slug: Prisma.FieldRef<"recipes", 'String'>
+  readonly description: Prisma.FieldRef<"recipes", 'String'>
 }
     
 

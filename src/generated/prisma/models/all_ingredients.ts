@@ -221,14 +221,14 @@ export type all_ingredientsOrderByWithRelationInput = {
 
 export type all_ingredientsWhereUniqueInput = Prisma.AtLeast<{
   id?: number
+  name?: string
   AND?: Prisma.all_ingredientsWhereInput | Prisma.all_ingredientsWhereInput[]
   OR?: Prisma.all_ingredientsWhereInput[]
   NOT?: Prisma.all_ingredientsWhereInput | Prisma.all_ingredientsWhereInput[]
   created_at?: Prisma.DateTimeNullableFilter<"all_ingredients"> | Date | string | null
-  name?: Prisma.StringNullableFilter<"all_ingredients"> | string | null
   type?: Prisma.Enumingredient_typeNullableFilter<"all_ingredients"> | $Enums.ingredient_type | null
   recipe_ingredients?: Prisma.Recipe_ingredientsListRelationFilter
-}, "id">
+}, "id" | "name">
 
 export type all_ingredientsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

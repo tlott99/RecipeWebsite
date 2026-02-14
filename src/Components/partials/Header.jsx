@@ -1,8 +1,15 @@
+"use client"
+
 import React from 'react';
 import LoginDropdown from './LoginDropdown';
 import Link from 'next/link';
+import { authClient } from '@/lib/auth/client';
+
 
 export default function Header() {
+    const { data: session} = authClient.useSession();
+    const isAuthenticated = !!session; 
+
     return (
         <header className="header w-full">
             <div className="backgroundGrey pt-6 w-full px-4 grid grid-cols-4">
@@ -31,14 +38,13 @@ export default function Header() {
                       >
                           Recipe Finder
                       </Link>
-                      
-                      <Link 
+                      {isAuthenticated && (<Link 
                           href="/builder" 
                           className="bg-blue-600 hover:bg-blue-700 text-white rounded shadow px-4 py-1 transition-all
                           text-[8px] md:text-[12px] lg:text-[16px]"
                       >
                           Recipe Builder
-                      </Link>
+                      </Link>)}
                   </nav>
                 </div>
                 <div className="col-start-4 col-span-1 flex justify-end w-full">

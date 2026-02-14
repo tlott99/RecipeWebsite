@@ -2,21 +2,32 @@
 
 import { useState } from "react";
 import MeasurementType from "./MeasurementType";
+import IngredientType from "./IngredientType";
 
 export default function Ingredients({ ingredientsList, setIngredientsList }) {
   const [measurement, setMeasurement] = useState('');
-  const [amount, setAmount] = useState(['']);
+  const [amount, setAmount] = useState('');
   const [newIngredient, setNewIngredient] = useState('');
+  const [ingredientType, setIngredientType] = useState('');
 
   const handleIngredientAdd = () => {
+
+    if (!newIngredient.trim() || !amount.trim() || !measurement.trim()) {
+    alert("Please enter an amount, a measurement, and an ingredient name.");
+    return;
+  }
     const thisIngredient = {
       ingredient: newIngredient,
       measurement: measurement,
-      amount: amount
+      amount: amount,
+      ingredientType: ingredientType
     };
     setIngredientsList([...ingredientsList, thisIngredient]);
     // Optional: Clear internal inputs after adding
     setNewIngredient('');
+    setAmount('');
+    setMeasurement('');
+    setIngredientType('');
   };
 
   const handleIngredientChange = (event) => {
@@ -44,8 +55,9 @@ export default function Ingredients({ ingredientsList, setIngredientsList }) {
           <input
             name="amount"
             type="text"
+            value={amount}
             onChange={handleAmountChange}
-            className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
+            className="border border-gray-300 w-24 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
             placeholder="e.g. 1/2"
           />
         </div>
@@ -56,16 +68,22 @@ export default function Ingredients({ ingredientsList, setIngredientsList }) {
         />
 
         <div className="flex flex-col space-y-1">
-          <label className="text-xs font-medium text-gray-500">Ingredient Type</label>
+          <label className="text-xs font-medium text-gray-500">Ingredient</label>
           <input
             name="ingredient"
             type="text"
             id="ingredient"
+            value={newIngredient}
             onChange={handleIngredientChange}
-            className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
+            className="border border-gray-300 rounded-md max-w-[150px] px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
             placeholder="e.g. Flour"
           />
         </div>
+
+        <IngredientType 
+          ingredientType={ingredientType} 
+          setIngredientType={setIngredientType} 
+        />
 
         <button
           type="button"

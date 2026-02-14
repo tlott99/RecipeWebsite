@@ -14,25 +14,34 @@ export async function createRecipe(data) {
         prep_time: data.prepTime,
         cook_time: data.cookTime,
         created_at: nowTime,
+        meal_type: data.mealType.checkedMeal,
 
         recipe_ingredients: {
-          create: data.ingredients.map(ing => ({
-            measurement_type: ing.measurement,
-            amount: ing.amount,
-            all_ingredients: {
-                connectOrCreate: {
-                    where: { name: ing.ingredient }, 
-                    create: { name: ing.ingredient }
-                }
-            }
-          })) // Expects [{ name: '...', amount: '...' }]
+          create: data.ingredients.map((ing) => {
+            const cleanName = ing.ingredient.toLowerCase().trim();
+            return{
+              measurement_type: ing.measurement,
+              amount: ing.amount,
+              created_at: nowTime,
+              all_ingredients: {
+                  connectOrCreate: {
+                      where: { name: cleanName }, 
+                      create: { 
+                        name: cleanName,
+                        created_at: nowTime,
+                        type: ing.ingredientType,
+                      }
+                  }
+              }
+            };
+          })
         },
-        // instructions: {
-        //   create: data.instructions.map(ins => ({
-        //     name: ins.name,
-        //     amount: ins.amount,
-        //   })) // Expects [{ step: '...', order: 1 }]
-        // }
+        instructions: {
+          create: data.instructions.map(ins => ({
+            instruction_text: ins.instruction,
+            created_at: nowTime,
+          }))
+        }
       },
     });
 

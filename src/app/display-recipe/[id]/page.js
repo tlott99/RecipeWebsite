@@ -7,23 +7,35 @@ export default async function RecipeDisplay({ params }) {
   const numericId = parseInt(id, 10);
 
   // 1. Fetch from Neon using the numeric ID
-const recipe = await prisma.recipes.findUnique({
-  where: { id: numericId },
-  include: {
-    // This pulls from the 'instructions' table
-    instructions: {
-      orderBy: { instruction_number: 'asc' } // Optional: keeps instructions in order
-    },
-    // This pulls from 'recipe_ingredients'
-    recipe_ingredients: {
-      include: {
-        // This "hops" from recipe_ingredients to 'all_ingredients' 
-        // to get the actual name/details of the ingredient
-        all_ingredients: true 
+  const recipe = await prisma.recipes.findUnique({
+    where: { id: numericId },
+    include: {
+      // This pulls from the 'instructions' table
+      instructions: {
+        orderBy: { instruction_number: 'asc' } // Optional: keeps instructions in order
+      },
+      // This pulls from 'recipe_ingredients'
+      recipe_ingredients: {
+        include: {
+          // This "hops" from recipe_ingredients to 'all_ingredients' 
+          // to get the actual name/details of the ingredient
+          all_ingredients: true 
+        }
       }
     }
+  });
+  console.log(recipe);
+
+  const parsedPrepTime = recipe.prep_time.slice(4);
+  const parsedCookTime = recipe.cook_time.slice(4);
+  var parsedPrivacy = ""
+  if (recipe.private_recipe == true){
+    parsedPrivacy = "Private"
   }
-});
+  else{
+    parsedPrivacy = "Public"
+  }
+  
 
   if (!recipe) {
     notFound();
@@ -42,12 +54,12 @@ const recipe = await prisma.recipes.findUnique({
               <p className="text-gray-800">{recipe.meal_type || "N/A"}</p>
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold text-gray-400 uppercase text-xs">Prep</span>
-              <p className="text-gray-800">{recipe.prep_time}m</p>
+              <span className="font-semibold text-gray-400 uppercase text-xs">Prep Time</span>
+              <p className="text-gray-800">{parsedPrepTime} Minutes</p>
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold text-gray-400 uppercase text-xs">Cook</span>
-              <p className="text-gray-800">{recipe.cook_time}m</p>
+              <span className="font-semibold text-gray-400 uppercase text-xs">Cook Time</span>
+              <p className="text-gray-800">{parsedCookTime} Minutes</p>
             </div>
             <div className="flex flex-col">
               <span className="font-semibold text-gray-400 uppercase text-xs">Servings</span>
@@ -55,7 +67,7 @@ const recipe = await prisma.recipes.findUnique({
             </div>
             <div className="flex flex-col">
               <span className="font-semibold text-gray-400 uppercase text-xs">Privacy</span>
-              <p className="text-gray-800 capitalize">{recipe.recipePrivacy}</p>
+              <p className="text-gray-800 capitalize">{parsedPrivacy}</p>
             </div>
           </div>
         </div>

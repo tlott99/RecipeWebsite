@@ -16,7 +16,7 @@ export default function Builder() {
   const [ingredientsList, setIngredientsList] = useState([]);
   const [instructionsList, setInstructionsList] = useState([]);
   const [description, setDescription] = useState(['']);
-  const [returnValue, setReturnValue] = useState(['']);
+  const [mealType, setMealType] = useState(['']);
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
   const [privacy, setPrivacy] = useState('public');
@@ -35,7 +35,7 @@ export default function Builder() {
       title,
       slug,
       privacy,
-      returnValue,
+      mealType,
       prepTime,
       cookTime,
       servingSize,
@@ -73,7 +73,7 @@ export default function Builder() {
 
         {/* MealType Section - Responsive row on 1200px (xl), column otherwise */}
         <div className="flex flex-col xl:flex-row mt-6">
-          <MealType returnValue={returnValue} setReturnValue={setReturnValue} />
+          <MealType mealType={mealType} setMealType={setMealType} />
         </div>
 
         {/* Time and Serving Info */}

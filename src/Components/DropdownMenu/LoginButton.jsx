@@ -1,9 +1,7 @@
-import React from "react";
+import { authClient } from "@/lib/auth/client";
 
 const LoginButton = () => {
-  const { loginWithRedirect } = ""
-
-  return <button onClick={() => loginWithRedirect()}>Log In</button>;
+  return <button onClick={() => authClient.signIn()}>Log In</button>;
 };
 
 export default LoginButton;

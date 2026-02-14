@@ -1,6 +1,6 @@
 import NewCheckbox from "./Checkbox";
 
-export default function MealType({ returnValue, setReturnValue }) {
+export default function MealType({ mealType, setMealType }) {
   return (
     <div className="w-full">
       {/* h5 equivalent */}
@@ -12,28 +12,28 @@ export default function MealType({ returnValue, setReturnValue }) {
       <div className="flex flex-wrap items-center gap-4 mt-4 ml-6">
         <NewCheckbox 
           x="Breakfast" 
-          returnValue={returnValue} 
-          setReturnValue={setReturnValue}
+          mealType={mealType} 
+          setMealType={setMealType}
         />
         <NewCheckbox 
           x="Lunch" 
-          returnValue={returnValue} 
-          setReturnValue={setReturnValue}
+          mealType={mealType} 
+          setMealType={setMealType}
         />
         <NewCheckbox 
           x="Dinner" 
-          returnValue={returnValue} 
-          setReturnValue={setReturnValue}
+          mealType={mealType} 
+          setMealType={setMealType}
         />
         <NewCheckbox 
           x="Dessert" 
-          returnValue={returnValue} 
-          setReturnValue={setReturnValue}
+          mealType={mealType} 
+          setMealType={setMealType}
         />
         <NewCheckbox 
           x="Drink" 
-          returnValue={returnValue} 
-          setReturnValue={setReturnValue}
+          mealType={mealType} 
+          setMealType={setMealType}
         />
       </div>
     </div>

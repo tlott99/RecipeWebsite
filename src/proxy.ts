@@ -2,8 +2,10 @@ import { neonAuthMiddleware } from "@neondatabase/auth/next/server";
 
 export default neonAuthMiddleware({
   loginUrl: "/auth/sign-in",
+
 });
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/recipes/new"], // Routes to protect
+  // Protect everything EXCEPT the public paths and static files
+  matcher: ["/dashboard/:path*","/builder/:path*","/account/:path*"],
 };
