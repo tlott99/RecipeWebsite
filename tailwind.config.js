@@ -1,19 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require( 'tailwindcss/defaultTheme' );
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{html,jsx,.js}"
+    "./src/**/*.{js,ts,jsx,tsx,html,css}",
   ],
-
   theme: {
-    screens: {
-			...defaultTheme.screens,
-			'container': '1110px',
-		},
-    extend: {},
+    extend: {
+      screens: {
+        'container': '1110px',
+        ...defaultTheme.screens,
+      },
+    },
   },
   plugins: [],
 }
-

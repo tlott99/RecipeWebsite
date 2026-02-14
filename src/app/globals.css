@@ -1,12 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+@import 'tailwindcss';
+@import "@neondatabase/auth/ui/tailwind";
 
 main {
   text-align: center;
   vertical-align: center;
-  line-height: 100vh
 }
 body{
   margin: 0

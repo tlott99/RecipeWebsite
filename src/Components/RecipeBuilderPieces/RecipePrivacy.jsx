@@ -1,28 +1,53 @@
-import * as React from 'react';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+"use client";
 
-export default function RecipePrivacy({privacy, setPrivacy}) {
-  const handlePrivacyChange = (event) =>{
-    setPrivacy(event.target.value);
+export default function RecipePrivacy({ privacy, setPrivacy }) {
+  const handlePrivacyChange = (event) => {
+    // Convert the string "personal" to true, and "public" to false
+    const isPrivate = event.target.value === 'personal';
+    setPrivacy(isPrivate);
   };
+
   return (
-    <FormControl>
-      <FormLabel id="recipe-privacy-settings">Recipe Privacy</FormLabel>
-      <RadioGroup
-        row
+    <div className="flex flex-col space-y-2 mt-6">
+      <span id="recipe-privacy-settings" className="text-sm font-medium text-gray-700">
+        Recipe Privacy
+      </span>
+
+      <div 
+        className="flex flex-row space-x-6 ml-3"
+        role="radiogroup" 
         aria-labelledby="recipe-privacy-settings"
-        name="row-radio-buttons-group"
-        value={privacy}
-        onChange={handlePrivacyChange}
       >
-        <FormControlLabel value="personal" control={<Radio />} label="Personal" />
-        <FormControlLabel value="public" control={<Radio />} label="Public" />
-      </RadioGroup>
-    </FormControl>
-    
+        {/* Personal Radio (mapped to true) */}
+        <label className="flex items-center cursor-pointer group">
+          <input
+            type="radio"
+            name="privacy"
+            value="personal"
+            checked={privacy === true} // Check if state is exactly true
+            onChange={handlePrivacyChange}
+            className="..."
+          />
+          <span className="ml-2 text-sm text-gray-700 group-hover:text-gray-900">
+            Personal
+          </span>
+        </label>
+
+        {/* Public Radio (mapped to false) */}
+        <label className="flex items-center cursor-pointer group">
+          <input
+            type="radio"
+            name="privacy"
+            value="public"
+            checked={privacy === false} // Check if state is exactly false
+            onChange={handlePrivacyChange}
+            className="..."
+          />
+          <span className="ml-2 text-sm text-gray-700 group-hover:text-gray-900">
+            Public
+          </span>
+        </label>
+      </div>
+    </div>
   );
 }

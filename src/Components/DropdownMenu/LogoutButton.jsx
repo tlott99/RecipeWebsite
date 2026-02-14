@@ -1,12 +1,19 @@
-import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+"use client";
+import { authClient } from "@/lib/auth/client";
+import { useRouter } from "next/navigation";
 
 const LogoutButton = () => {
-  const { logout } = useAuth0();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await authClient.signOut();
+    router.refresh(); // Tells the Dropdown to update immediately
+    router.push("/"); // Send them home
+  };
 
   return (
-    <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-      Log Out
+    <button onClick={handleLogout} className="cursor-pointer hover:text-blue-200 w-full text-left">
+      Logout
     </button>
   );
 };
